@@ -29,7 +29,7 @@ import sendEmailGoogle from "./src/utils/messageEmailGoogle.js";
 // sendEmailGoogle();
 import sendSMS from "./src/utils/messageSMS.js";
 // sendSMS();
-import sendWhatsapp from "./src/utils/messageWhatsApp.js";
+import sendWhatsApp from "./src/utils/messageWhatsApp.js";
 //sendWhatsapp();
 
 /*============================[Middlewares]============================*/
