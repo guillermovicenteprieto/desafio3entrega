@@ -23,6 +23,7 @@ const serverMode = argv.mode || "FORK";
 
 const app = express();
 
+/*
 import sendEmail from "./src/utils/messageEmailEthereal.js";
 //sendEmail();
 import sendEmailGoogle from "./src/utils/messageEmailGoogle.js";
@@ -31,7 +32,7 @@ import sendSMS from "./src/utils/messageSMS.js";
 // sendSMS();
 import sendWhatsApp from "./src/utils/messageWhatsApp.js";
 //sendWhatsapp();
-
+*/
 /*============================[Middlewares]============================*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
