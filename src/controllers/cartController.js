@@ -3,9 +3,9 @@ const cartClass = new CartClass();
 import logger from "../utils/loggers.js";
 import {Cart} from "../models/Cart.js";
 import {Product} from "../models/Product.js";
-import sendSMS from "../utils/messagesSMS.js";
-import sendMail from "../utils/messagesMail.js";
-import sendWhatsapp from "../utils/messagesWhatsapp.js";
+import sendSMS from "../utils/messageSMS.js";
+import sendMail from "../utils/messageEmailEthereal.js";
+import sendWhatsapp from "../utils/messageWhatsApp.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -40,7 +40,7 @@ class CartController {
     async getCartById (id) {
         try {
             logger.info(`Se registra petición GET /carts/${id}`)
-            const cart = await Cart.findById(id)
+            const cart = await cartClass.getCartById(id)
             logger.info(`Se obtiene cart`)
             return cart
         }
@@ -52,7 +52,7 @@ class CartController {
     async updateCart (id, cart) {
         try {
             logger.info(`Se registra petición PUT /carts/${id}`)
-            const cartActualizado = await Cart.findByIdAndUpdate(id, cart)
+            const cartActualizado = await cartClass.updateCart(id, cart)
             logger.info(`Se actualiza cart`)
             return cartActualizado
         }
@@ -64,7 +64,7 @@ class CartController {
     async deleteCart (id) {
         try {
             logger.info(`Se registra petición DELETE /carts/${id}`)
-            const cartEliminado = await Cart.findByIdAndDelete(id)
+            const cartEliminado = await cartClass.deleteCart(id)
             logger.info(`Se elimina cart`)
             return cartEliminado
         }
@@ -76,8 +76,8 @@ class CartController {
     async addProductToCart (id, product) {
         try {
             logger.info(`Se registra petición POST /carts/${id}/products`)
-            const cart = await Cart.findById(id)
-            const producto = await Product.findById(product)
+            const cart = await cartClass.addProductToCart(id, product)
+            const producto = await cartClass.getProductById(product)
             cart.products.push(producto)
             const cartActualizado = await cart.save()
             logger.info(`Se agrega producto al cart`)
@@ -91,7 +91,9 @@ class CartController {
     async removeProductFromCart (id, product) {
         try {
             logger.info(`Se registra petición DELETE /carts/${id}/products/${product}`)
-            const cart = await Cart.findById(id)
+            const cart = await cartClass.removeProductFromCart(id, product)
+            
+
             const producto = await Product.findById(product)
             cart.products.pull(producto)
             const cartActualizado = await cart.save()

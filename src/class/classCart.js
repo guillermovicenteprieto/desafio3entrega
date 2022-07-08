@@ -68,6 +68,7 @@ class CartClass {
         try {
             logger.info(`Se registra petición POST /carts/${id}/products`)
             const cart = await Cart.findById(id)
+            const product = await Product.findById(product)
             cart.products.push(product)
             const cartActualizado = await Cart.findByIdAndUpdate(id, cart)
             logger.info(`Se actualiza cart`)
@@ -78,6 +79,22 @@ class CartClass {
             throw err
         }
     }
+    async removeProductFromCart(id, product) {
+        try {
+            logger.info(`Se registra petición DELETE /carts/${id}/products/${product}`)
+            const cart = await Cart.findById(id)
+            const product = await Product.findById(product)
+            cart.products.pull(product)
+            const cartActualizado = await Cart.findByIdAndUpdate(id, cart)
+            logger.info(`Se actualiza cart`)
+            return cartActualizado
+        }
+        catch (err) {
+            logger.error(`Error al actualizar cart`)
+            throw err
+        }
+    }
+    
 }
 
 export default CartClass

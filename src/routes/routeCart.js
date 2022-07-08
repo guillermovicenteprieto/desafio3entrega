@@ -6,15 +6,17 @@ import { Router } from "express";
 /*revisar por qué no funcionan la totalidad de éstas rutas con controllers:*/
 // import CartController from "../controllers/cartController.js";
 // const cartController = new CartController();
-
+export const routeCart = Router();
 // routeCart.get("/carrito", cartController.getAllCarts);
-// routeCart.post("/carrito", cartController.createCart);
 // routeCart.get("/carrito/:id", cartController.getCartById);
+// routeCart.post("/carrito", cartController.createCart);
+// routeCart.post("/carrito/:id/productos", cartController.addProductToCart);
 // routeCart.put("/carrito/:id", cartController.updateCart);
 // routeCart.delete("/carrito/:id", cartController.deleteCart);
 
-export const routeCart = Router();
+//export const routeCart = Router();
 /*============================[Rutas API: /api/carrito]============================*/
+
 routeCart
     .get('/carrito', (req, res) => {
         logger.info(`Se registra petición GET /carritos`)
