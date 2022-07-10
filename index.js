@@ -7,16 +7,16 @@ import passport from "passport";
 import dotenv from "dotenv";
 dotenv.config();
 import "./src/database.js";
-import { PORT } from "./src/utils/port.js";
-import { routerInfo, routerHandlebars } from "./src/routes/routes.js";
 import { loginStrategy, signupStrategy } from "./src/middlewares/passportLocal.js";
 import compression from "compression";
 import logger from "./src/utils/loggers.js";
 import minimist from "minimist";
 import os from "os";
 import cluster from "cluster";
+import routerInfo from "./src/routes/routes.js";
 import routeProduct from "./src/routes/routeProduct.js"; 
 import routeCart from "./src/routes/routeCart.js";
+import routeUser from "./src/routes/routeUser.js";
 const numCPUs = os.cpus().length;
 const argv = minimist(process.argv.slice(2))
 const serverMode = argv.mode || "FORK";
@@ -70,12 +70,12 @@ app.set('views', './views');
 
 /*============================[Rutas Info]============================*/
 app.use('/', routerInfo);
-/*============================[Rutas Views]============================*/
-app.use('/', routerHandlebars);
-//app.use('/api', routerAPI);
+
 /*============================[Rutas API]============================*/
+app.use('/', routeUser);
 app.use('/api', routeProduct);
 app.use('/api', routeCart);
+
 
 app.get('*', (req, res) => {
   logger.warn({
@@ -85,7 +85,7 @@ app.get('*', (req, res) => {
 });
 
 /*============================[Servidor]============================*/
-//const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 if (serverMode == "CLUSTER") {
   logger.info(`Primary: ${process.pid}`)
   for (let i = 0; i < numCPUs; i++) {

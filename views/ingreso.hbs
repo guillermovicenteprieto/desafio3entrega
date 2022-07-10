@@ -1,16 +1,14 @@
-<div class="container text-center bg-success">
+<div class="container text-center my-4">
 
-  <h4>Le damos la Bienvenida, </h4>
-  <h2><b> {{nombre}} {{username}} {{usuario.username}}</b></h2>
-  <h5>Ahora puede acceder a ver los productos!</h5>
-  <button
-    class="btn btn-danger my-4"
-    onclick="location.href='/productos'"
-  >PRODUCTOS</button>
-  <button
-    class="btn btn-danger my-4"
-    onclick="location.href='/logout'"
-  >SALIR DE SESION</button>
+  <div class="container text-center p-2">
+    <h4>Le damos la Bienvenida, </h4>
+    <h2 class="text-light"><b> <i>{{nombre}}{{username}} {{usuario.username}}</i></b></h2>
+  </div>
+
+  <h4>Ahora puede acceder a ver los productos!</h4>
+  
+  <button class="btn btn-success my-4" onclick="location.href='/productos'">PRODUCTOS</button>
+
+  <button class="btn btn-danger my-4" onclick="location.href='/logout'">SALIR DE SESION</button>
 
 </div>
-

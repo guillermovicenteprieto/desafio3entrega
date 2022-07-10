@@ -3,8 +3,8 @@ import ProductController from '../controllers/productController.js';
 const productController = new ProductController();
 
 /* del código anterior, para resolver en routeCart*/
-// import logger from "../utils/loggers.js";
-// import { Product } from "../models/Product.js";
+import logger from "../utils/loggers.js";
+import { Product } from "../models/Product.js";
 // import generateRandomProduct from "../class/fakerContainer.js";
 // const listProducts = generateRandomProduct(10);
 
@@ -16,6 +16,8 @@ routeProduct.post("/productos", productController.createProduct);
 routeProduct.get("/productos/:id", productController.getProductById);
 routeProduct.put("/productos/:id", productController.updateProduct);
 routeProduct.delete("/productos/:id", productController.deleteProduct);
+
+
 
 /* código anterior para resolver misma metodología ccon routeCart */
 /*

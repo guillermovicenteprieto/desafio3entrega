@@ -1,48 +1,59 @@
 <html lang="es">
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    {{!-- <link rel="stylesheet" href="./styles.css" />
-    <script src="/socket.io/socket.io.js"></script> --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  {{!
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="/socket.io/socket.io.js"></script> }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <title>3Entrega</title>
-  </head>
+  <title>3Entrega</title>
+<style type="text/css">
+  {{!-- .form-group {
+    margin-bottom: 1rem;
+  } --}}
+  body {
+    background-color: #273032;
+  }
+  .container {
+    background-color: rgb(72, 165, 212);
+    border-radius: 10px;
+   
+    margin-bottom: 1rem;
+  }
 
-  <body>
-    <div class="m-3">
-      <div class="bg-success p-3 text-center">
-        <h3><b>🛰️ DESAFIO 3 ENTREGA 🚀</b></h3>
-        <h6><b> Regístrese para poder ver nuestros productos </b></h6>
-      </div>
+></style>
+
+</head>
+
+
+<body>
+  <div class="m-1">
+    <div class="bg-success p-2 text-center text-light">
+      <h6><b>🛰️ DESAFIO 3 ENTREGA PROYECTO FINAL🛰️</b></h6>
     </div>
+  </div>
 
-    <div class="container mt-4">
-      {{{body}}}
-    </div>
+  <div class="container mt-4">
+    {{{body}}}
+  </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    {{!-- <script src="./client.js"></script> --}}
-    <script>
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-      preferredCountries: ["ar"],
-      utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  {{!
+  <script src="./client.js"></script> }}
+  <script>
+    const phoneInputField = document.querySelector("#phone"); const phoneInput
+      = window.intlTelInput(phoneInputField, {
+        preferredCountries: ["ar"],
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
   </script>
-  </body>
+</body>
 
 </html>

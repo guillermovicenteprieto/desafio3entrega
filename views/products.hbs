@@ -1,0 +1,18 @@
+<div class="container-fluid"
+    style="display: flex; justify-content:space-between; align-items:center; padding:3rem">
+    <div class="text-center text-light">
+        {{!-- <span><i>user:</i></b></span> --}}
+        <h2><i><b> {{nombre}} </b></i></h2>
+        <span>email:</span>
+        <span><i> {{email}} </i> </span>
+    </div>
+
+    <div>
+        <button class="btn btn-danger" onclick="location.href='/logout'">Desloguear</button>
+    </div>
+    {{!-- <div>
+        <button class="btn btn-danger" onclick="location.href='/api/carrito'">carrito</button>
+    </div> --}}
+</div>
+
+{{> products}}

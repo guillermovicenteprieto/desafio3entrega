@@ -1,7 +1,7 @@
-<div class="entry">
+<div class="entry m-1 p-2">
   {{#if listProducts}}
-  <h4 class="mt-4"> Lista de Productos </h4>
-    <table class="table table-striped table-hover">
+  <h4 class="mb-3 text-center text-light"> Lista de Productos <i>Faker</i></h4>
+    <table class="table table-hover">
       <thead class="bg-warning">
         <tr>
           <th scope="col">ID</th>
@@ -25,7 +25,6 @@
         {{/each}}
       </tbody>
     </table>
-
   {{else}}
     <h4 class="mt-4"> No hay productos agregados</h4>
   {{/if}}

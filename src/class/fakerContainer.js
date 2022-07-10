@@ -7,7 +7,8 @@ function generateRandomProduct(cant = 5) {
             id: i+1,
             name: faker.commerce.productName(),
             price: faker.commerce.price(),
-            url: faker.internet.url()
+            url: faker.image.transport(1234, 2345, true),
+            //image: faker.image.technics(1234, 2345, true)
         }
         listProducts.push(prod); 
     }

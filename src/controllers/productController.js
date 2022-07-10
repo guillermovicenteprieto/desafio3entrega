@@ -14,7 +14,10 @@ class ProductController {
       //let listProducts = list.concat (productos)
       logger.info(`Se obtienen productos`)
       //res.json(listProducts)
+      
       res.json(productos)
+
+      return productos
     }
     catch (err) {
       logger.error(`Error al obtener productos`)
