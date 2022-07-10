@@ -1,22 +1,15 @@
 import ProductsClass from "../class/classProducts.js";
 const productsClass = new ProductsClass();
 import logger from "../utils/loggers.js";
-import generateRandomProduct from "../class/fakerContainer.js";
-const listFaker = generateRandomProduct(10);
 
 class ProductController {
-  
-  async getAllProducts (req, res) {
+
+  async getAllProducts(req, res) {
     try {
       logger.info(`Se registra petición GET /productos`)
-      //const list = listFaker
       const productos = await productsClass.getAllProducts()
-      //let listProducts = list.concat (productos)
       logger.info(`Se obtienen productos`)
-      //res.json(listProducts)
-      
       res.json(productos)
-
       return productos
     }
     catch (err) {
@@ -24,7 +17,8 @@ class ProductController {
       throw err
     }
   }
-  async createProduct (req, res) {
+
+  async createProduct(req, res) {
     try {
       logger.info(`Se registra petición POST /productos`)
       const productoCreado = await productsClass.createProduct(req.body)
@@ -36,7 +30,8 @@ class ProductController {
       throw err
     }
   }
-  async getProductById (req, res) {
+
+  async getProductById(req, res) {
     try {
       logger.info(`Se registra petición GET /productos/${req.params.id}`)
       const producto = await productsClass.getProductById(req.params.id)
@@ -48,7 +43,8 @@ class ProductController {
       throw err
     }
   }
-  async updateProduct (req, res) {
+
+  async updateProduct(req, res) {
     try {
       logger.info(`Se registra petición PUT /productos/${req.params.id}`)
       const productoActualizado = await productsClass.updateProduct(req.params.id, req.body)
@@ -60,7 +56,8 @@ class ProductController {
       throw err
     }
   }
-  async deleteProduct (req, res) {
+
+  async deleteProduct(req, res) {
     try {
       logger.info(`Se registra petición DELETE /productos/${req.params.id}`)
       const productoEliminado = await productsClass.deleteProduct(req.params.id)

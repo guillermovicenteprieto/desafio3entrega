@@ -1,16 +1,16 @@
 import mongoose from 'mongoose'
 import logger from '../utils/loggers.js'
 import { Product } from '../models/Product.js'
-import generateRandomProduct from "./fakerContainer.js";
-const listProducts = generateRandomProduct(10);
 
 class ProductsClass {
+  
   constructor () {
     this.listProducts = []
   }
+
   async getAllProducts () {
     try {
-      logger.info(`Se registra petición GET /productos`)
+      logger.info(`Se registra petición GET /api/productos`)
       const productos = await Product.find({})
       logger.info(`Se obtienen productos`)
       return productos
@@ -20,23 +20,10 @@ class ProductsClass {
       throw err
     }
   }
-  async createProduct (producto) {
-    try {
-      logger.info(`Se registra petición POST /productos`)
-      //const lista = listProducts
-      const productoCreado = await Product.create(producto)
-      //productoCreado.push(lista)
-      logger.info(`Se crea producto`)
-      return productoCreado
-    }
-    catch (err) {
-      logger.error(`Error al crear producto`)
-      throw err
-    }
-  }
+
   async getProductById (id) {
     try {
-      logger.info(`Se registra petición GET /productos/${id}`)
+      logger.info(`Se registra petición GET /api/productos/${id}`)
       const producto = await Product.findById(id)
       logger.info(`Se obtiene producto`)
       return producto
@@ -46,9 +33,23 @@ class ProductsClass {
       throw err
     }
   }
+
+  async createProduct (producto) {
+    try {
+      logger.info(`Se registra petición POST /api/productos`)
+      const productoCreado = await Product.create(producto)
+      logger.info(`Se crea producto`)
+      return productoCreado
+    }
+    catch (err) {
+      logger.error(`Error al crear producto`)
+      throw err
+    }
+  }
+
   async updateProduct (id, producto) {
     try {
-      logger.info(`Se registra petición PUT /productos/${id}`)
+      logger.info(`Se registra petición PUT /api/productos/${id}`)
       const productoActualizado = await Product.findByIdAndUpdate(id, producto)
       logger.info(`Se actualiza producto`)
       return productoActualizado
@@ -60,7 +61,7 @@ class ProductsClass {
   }
   async deleteProduct (id) {
     try {
-      logger.info(`Se registra petición DELETE /productos/${id}`)
+      logger.info(`Se registra petición DELETE /api/productos/${id}`)
       const productoEliminado = await Product.findByIdAndDelete(id)
       logger.info(`Se elimina producto`)
       return productoEliminado

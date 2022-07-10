@@ -1,290 +1,186 @@
 {
-	"info": {
-		"_postman_id": "d8632250-dfbe-48b5-aec7-cc64b7e5c38f",
-		"name": "3ºEntregaProyectoFinal",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19862281"
-	},
-	"item": [
-		{
-			"name": "ruta_productos",
-			"item": [
-				{
-					"name": "http://localhost:8080/api/productos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/productos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"productos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/productos/:id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/productos/62c4be398435dbcacac33178",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"productos",
-								"62c4be398435dbcacac33178"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/productos",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Producto universal\",\r\n    \"price\": 1500,\r\n    \"stock\": 500,\r\n    \"description\": \"producto universal\",\r\n    \"image\": \"https://via.placeholder.com/200\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/productos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"productos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/:id",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Producto ACTUALIZADOOOO\",\r\n    \"price\": 1500,\r\n    \"stock\": 500,\r\n    \"description\": \"description ACTUALIZADA\",\r\n    \"image\": \"https://via.placeholder.com/200\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/productos/62c4be398435dbcacac33178",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"productos",
-								"62c4be398435dbcacac33178"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/:id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/productos/62c75ad25e7aaa8656a5e1d2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"productos",
-								"62c75ad25e7aaa8656a5e1d2"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "ruta_carrito",
-			"item": [
-				{
-					"name": "http://localhost:8080/api/carrito",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/carrito/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carrito",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/carrito/:id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/carrito/62c4bea28435dbcacac33181",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carrito",
-								"62c4bea28435dbcacac33181"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/carrito",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"carritoTres\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/carrito",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carrito"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/carrito/:id/productos/",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": " {\r\n        \"_id\": \"62c3929203d27b03d24985a8\",\r\n        \"name\": \"una casa con diez pinos / 3 entrega\",\r\n        \"price\": 10000000,\r\n        \"url\": \"https://via.placeholder.com/200\",\r\n        \"description\": \"una casa con diez pinos\",\r\n        \"__v\": 0\r\n    }"
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/carrito/62c4bb3bce4fbf2c3edd1990/productos/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carrito",
-								"62c4bb3bce4fbf2c3edd1990",
-								"productos",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/carrito/:id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/carrito/62c4beba8435dbcacac33183",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carrito",
-								"62c4beba8435dbcacac33183"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8080/api/carrito/:id/products/:productId\"",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/carrito/6267594c74dd2eb62f47d8b9/productos/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"carrito",
-								"6267594c74dd2eb62f47d8b9",
-								"productos",
-								"2"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+    "info": {
+        "_postman_id": "d8632250-dfbe-48b5-aec7-cc64b7e5c38f",
+        "name": "3ºEntregaProyectoFinal",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "ruta_productos",
+            "item": [
+                {
+                    "name": "http://localhost:8080/api/productos",
+                    "id": "e6d16378-44d3-4cc6-b98f-6eadbb78c005",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "http://localhost:8080/api/productos"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/productos/:id",
+                    "id": "f5886e82-25e9-4bf8-9d93-8c39f8be75ec",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "http://localhost:8080/api/productos/62c4bdd08435dbcacac3316a"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/productos",
+                    "id": "86e54a72-e554-4cb8-af9d-43662fefb141",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"TERMO ACERO INOXIDABLE\",\r\n    \"price\": 5400,\r\n    \"stock\": 28,\r\n    \"description\": \"para mate con yerbas exóticas\",\r\n    \"image\": \"https://via.placeholder.com/200\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://localhost:8080/api/productos"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/:id",
+                    "id": "2a5be0f6-9417-4ccd-bb73-11b9fb741513",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Producto Actualizado #IMPORTADO\",\r\n    \"price\": 1500,\r\n    \"stock\": 500,\r\n    \"description\": \"description para producto actualizado #IMPORTADO\",\r\n    \"image\": \"https://via.placeholder.com/200\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://localhost:8080/api/productos/62c76b06180773b45c1af9f9"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/:id",
+                    "id": "f1db8430-93ac-452d-95c9-30ba83db826a",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "http://localhost:8080/api/productos/62c75bb35e7aaa8656a5e1dd"
+                    },
+                    "response": []
+                }
+            ],
+            "id": "9b2a4cd1-46c0-4839-be79-d3c0ad2279c6"
+        },
+        {
+            "name": "ruta_carrito",
+            "item": [
+                {
+                    "name": "http://localhost:8080/api/carritos",
+                    "id": "6ebc8688-464d-47bc-ac6a-0a7e320e2744",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "http://localhost:8080/api/carritos/"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/carritos/:id",
+                    "id": "d45fdb37-91bd-4935-af27-a1c6ba463182",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": "http://localhost:8080/api/carritos/62c78f2f90ada967eaf624f0"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/carritos/:id/productos",
+                    "id": "0f9d60e5-442e-48d8-94bd-ff7824d08b9f",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": "http://localhost:8080/api/carritos/62ca6ab121d5d9f82c36ca91/productos"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/carritos",
+                    "id": "a6a43d71-7794-4a85-b1d8-f99f5ce0649e",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"carrito multiverso #333\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://localhost:8080/api/carritos"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/carritos/:id/productos/:idProduct",
+                    "id": "576f1d1b-3861-40b2-8175-80015a9b5e60",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": "http://localhost:8080/api/carritos/62c4bea28435dbcacac33181/productos/62c4bdd08435dbcacac3316a"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/carrito/:id",
+                    "id": "3c55178c-e7f3-48a9-a8ff-d84da45e78cf",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "http://localhost:8080/api/carritos/62c78f2f90ada967eaf624f0"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "http://localhost:8080/api/carrito/:id/products/:idProduct\"",
+                    "id": "a7657ad0-ed56-4997-bc96-84a2cc40c237",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "http://localhost:8080/api/carrito/62ca6852a52f688ea5056ea0/productos/62c4be398435dbcacac33178"
+                    },
+                    "response": []
+                }
+            ],
+            "id": "b22a0739-75e6-4127-99aa-b424d657e6bd"
+        }
+    ]
 }

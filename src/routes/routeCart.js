@@ -3,148 +3,110 @@ import { Cart } from "../models/Cart.js";
 import { Product } from "../models/Product.js";
 import { Router } from "express";
 
-/*revisar por qué no funcionan la totalidad de éstas rutas con controllers:*/
-// import CartController from "../controllers/cartController.js";
-// const cartController = new CartController();
+import CartController from "../controllers/cartController.js";
+const cartController = new CartController();
 export const routeCart = Router();
-// routeCart.get("/carritos", cartController.getAllCarts);
-// routeCart.get("/carrito/:id", cartController.getCartById);
-// routeCart.get("/carrito/:id/productos", cartController.getCartByIdProducts);
-// routeCart.post("/carrito", cartController.createCart);
-// routeCart.post("carrito/:id/productos/:idProduct", cartController.addProductToCart);
-// routeCart.delete("/carrito/:id", cartController.deleteCart);
-// routeCart.delete("/carrito/:id/productos/:idProduct  ", cartController.deleteProductFromCart);
+
+/*============================[Rutas API: /api/carritos]============================*/
+routeCart.get("/carritos", cartController.getAllCarts);
+routeCart.get("/carritos/:id", cartController.getCartById);
+routeCart.get("/carritos/:id/productos", cartController.getCartProducts);
+routeCart.post("/carritos", cartController.createCart);
+
+/*rutas que no funcionan desde controllers...*/
 
 
 
-//export const routeCart = Router();
-/*============================[Rutas API: /api/carrito]============================*/
-
-routeCart
-    .get('/carritos', (req, res) => {
-        logger.info(`Se registra petición GET /carritos`)
-        Cart.find({}, (err, carritos) => {
+ routeCart.get('/buyCart/:id/user/:id', async (req, res) => {
+    try {
+        logger.info(`Se registra petición GET /api/carritos/${req.params.id}/user/${req.params.id}`)
+        Cart.findById(req.params.id, (err, cart) => {
             if (err) {
-                logger.error(`Error al obtener carritos`)
-                res.json(err);
-            } else {
-                logger.info(`Se obtienen carritos`)
-                res.json(carritos);
+                logger.error(`Error al obtener cart`)
+                throw err
             }
-        })
-    })
-
-    .get('/carrito/:id', (req, res) => {
-        logger.info(`Se registra petición GET /carritos/${req.params.id}`)
-        Cart.findById(req.params.id, (err, carrito) => {
-            if (err) {
-                logger.error(`Error al obtener carrito`)
-                res.json(err);
-            } else {
-                logger.info(`Se obtiene carrito`)
-                res.json(carrito);
-            }
-        })
-    })
-
-
-    .get('/carrito/:id/productos', (req, res) => {
-        logger.info(`Se registra petición GET /carritos/${req.params.id}/productos`)
-        Cart.findById(req.params.id, (err, carrito) => {
-            if (err) {
-                logger.error(`Error al obtener productos`)
-                res.json(err);
-            } else {
-                Product.find({ _id: { $in: carrito.products } }, (err, productos) => {
+            else {
+                cart.buy(req.params.id, (err, cart) => {
                     if (err) {
-                        logger.error(`Error al obtener productos`)
-                        res.json(err);
-                    } else {
-                        logger.info(`Se obtienen productos`)
-                        const cart = {
-                            id: carrito.id,
-                            name: carrito.name,
-                            Date: carrito.Date,
-                            user: carrito.user,
-                            products: productos
-                        }
-                        res.json({ cart });
+                        logger.error(`Error al comprar cart`)
+                        throw err
                     }
-                })
-            }
-        })
-    })
+                    else {
+                        logger.info(`Se compró cart`)
+                        res.json(cart)
+                        return cart
+                    }
+                }
 
-    .post('/carrito', (req, res) => {
-        logger.info(`Se registra petición POST /carritos`)
-        const carrito = {
-            id: req.body.id,
-            name: req.body.name,
-            Date: req.body.Date,
-            user: req.body.user,
-            products: req.body.products
+                )
+            }
         }
-        Cart.create(carrito, (err, carrito) => {
-            if (err) {
-                logger.error(`Error al crear carrito`)
-                res.json(err);
-            } else {
-                logger.info(`Se crea carrito`)
-                res.json(carrito);
-            }
-        })
-    })
 
-    .post('/carrito/:id/productos/:idProduct', (req, res) => {
-        logger.info(`Se registra petición POST /carritos/${req.params.id}/productos`)
-        Cart.findById(req.params.id, (err, carrito) => {
-            if (err) {
-                logger.error(`Error al obtener carrito`)
-                res.json(err);
-            } else {
-                Product.findById(req.params.idProduct, (err, product) => {
-                    if (err) {
-                        logger.error(`Error al obtener producto`)
-                        res.json(err);
-                    } else {
-                        carrito.products.push(product);
-                        carrito.save((err, carrito) => {
-                            if (err) {
-                                logger.error(`Error al agregar producto al carrito`)
-                                res.json(err);
-                            } else {
-                                logger.info(`Se agrega producto al carrito`)
-                                const cart = {
-                                    id: carrito.id,
-                                    name: carrito.name,
-                                    Date: carrito.Date,
-                                    user: carrito.user,
-                                    products: carrito.products
-                                }
-                                res.json({ cart, product });
-                                //res.json(carrito);
+
+)
+    }
+    catch (err) {
+        logger.error(`Error al comprar cart`)
+        throw err
+    }
+}
+)
+
+
+//routeCart.post("carritos/:id/productos/:idProduct", cartController.addProductToCart);
+routeCart.post('/carritos/:id/productos/:idProduct', (req, res) => {
+    logger.info(`Se registra petición POST /carritos/${req.params.id}/productos`)
+    Cart.findById(req.params.id, (err, carrito) => {
+        if (err) {
+            logger.error(`Error al obtener carrito`)
+            res.json(err);
+        } else {
+            Product.findById(req.params.idProduct, (err, product) => {
+                if (err) {
+                    logger.error(`Error al obtener producto`)
+                    res.json(err);
+                } else {
+                    carrito.products.push(product);
+                    carrito.save((err, carrito) => {
+                        if (err) {
+                            logger.error(`Error al agregar producto al carrito`)
+                            res.json(err);
+                        } else {
+                            logger.info(`Se agrega producto al carrito`)
+                            const cart = {
+                                id: carrito.id,
+                                name: carrito.name,
+                                Date: carrito.Date,
+                                user: carrito.user,
+                                products: carrito.products
                             }
-                        })
-                    }
-                })
-            }
-        })
+                            res.json({ cart, product });
+                            return;
+                        }
+                    })
+                }
+            })
+        }
     })
+})
 
-    .delete('/carrito/:id', (req, res) => {
-        logger.info(`Se registra petición DELETE /carritos/${req.params.id}`)
-        Cart.findByIdAndDelete(req.params.id, (err, carrito) => {
-            if (err) {
-                logger.error(`Error al eliminar carrito`)
-                res.json(err);
-            } else {
-                logger.info(`Se elimina carrito`)
-                res.json(carrito);
-            }
-        })
+//routeCart.delete("/carritos/:id", cartController.deleteCart);
+routeCart.delete("/carritos/:id", (req, res) => {
+    logger.info(`Se registra petición DELETE /carritos/${req.params.id}`)
+    Cart.findByIdAndDelete(req.params.id, (err, carrito) => {
+        if (err) {
+            logger.error(`Error al eliminar carrito`)
+            res.json(err);
+        } else {
+            logger.info(`Se elimina carrito`)
+            res.json(carrito);
+            return
+        }
     })
+})
 
-    .delete('/carrito/:id/productos/:idProduct', (req, res) => {
+//routeCart.delete("/carritos/:id/productos/:idProduct  ", cartController.removeProductFromCart);
+routeCart.delete('/carrito/:id/productos/:idProduct', (req, res) => {
         logger.info(`Se registra petición DELETE /carritos/${req.params.id}/products/${req.params.idProduct}`)
         Cart.findById(req.params.id, (err, carrito) => {
             if (err) {
@@ -171,7 +133,7 @@ routeCart
                                     products: carrito.products
                                 }
                                 res.json({ cart });
-                                //res.json(carrito);
+                                return
                             }
                         })
                     }
