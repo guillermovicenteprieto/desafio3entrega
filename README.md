@@ -8,10 +8,13 @@ https://desafio3entregaproyectofinal.herokuapp.com/ -->
 
 
 ## Rutas
-| Método | Endpoint                 | Descripción                                              
+| Método | Endpoint                | Descripción                                                                                                                                                                                                                 |
+| ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
 | GET    | **/info**                | Muestra información relativa a la app 
 
 | GET    | **/productos-test**      | Devuelve un listado de 7 productos mock generados con **Faker.js** 
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 | GET    | **/**                    | Dirige a la página de inicio de la aplicación 
 
@@ -19,15 +22,17 @@ https://desafio3entregaproyectofinal.herokuapp.com/ -->
 
 | POST    | **/logout**             | Se accede tras clicker al boton 'deslogear' y luego de 2 segundos redirige a /login. 
 
-| GET    | **/productos**           | Me permite listar todos los productos disponibles      
-
-| GET    | **/api/productos**       | Me permite listar todos los productos disponibles     
+| GET    | **/productos**           | Listar todos los productos disponibles luego de realizar el LOGIN.    
 
 
-| POST   | **/api/productos**     | Para incorporar productos al listado       
+| GET    | **/api/productos**       | llstar todos los productos disponibles     
 
-| GET    | **/api/productos/:id** | Me permite mostrar un producto en concreto                                                                                                                                                                                          |
-| PUT    | **/productos/:id** | Para actualizar un producto                                                                                                                                                                                                        |
+| GET    | **/api/productos/:id**   | Muestra un producto según su id   
+
+| POST   | **/api/productos**       | Permite incorporar un producto a la base de datos       
+
+| PUT    | **/productos/:id**       | Actualizar un producto en la base de datos        
+
 | DELETE | **/productos/:id** | Para eliminar un producto                                                                                                                                                                                                        |
                  |
 
