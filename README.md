@@ -14,15 +14,22 @@ https://desafio3entregaproyectofinal.herokuapp.com/ -->
 | GET    | **/info**                | Muestra información relativa a la app 
 
 | GET    | **/productos-test**      | Devuelve un listado de 7 productos mock generados con **Faker.js** 
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
 
 | GET    | **/**                    | Dirige a la página de inicio de la aplicación 
 
-| POST    | **/login**              | Formulario de login. Las sesesiones son almacenadas en mongoAtlas  
+| GET    | **/login**               | Página de inicio de sesión 
 
-| POST    | **/logout**             | Se accede tras clicker al boton 'deslogear' y luego de 2 segundos redirige a /login. 
+| POST    | **/login**              | Formulario de login. Ingresa un usuario y contraseña y devuelve una página de ingreso y bienvenida.  
 
-| GET    | **/productos**           | Listar todos los productos disponibles luego de realizar el LOGIN.    
+| GET    | **/registro**            | Página de registro 
+
+| POST    | **/registro**           | Formulario de registro. Permite registrarse. Las sesesiones son almacenadas en mongoAtlas  
+
+| GET    | **/logout**             | Se accede tras clicker al boton 'deslogear' y luego de 2 segundos redirige a /login. 
+
+| GET    | **/productos**           | Lista los productos disponibles. Redirecciona luego de realizar el LOGIN.    
+
 
 
 | GET    | **/api/productos**       | llstar todos los productos disponibles     
@@ -31,9 +38,8 @@ https://desafio3entregaproyectofinal.herokuapp.com/ -->
 
 | POST   | **/api/productos**       | Permite incorporar un producto a la base de datos       
 
-| PUT    | **/productos/:id**       | Actualizar un producto en la base de datos        
+| PUT    | **/api/productos/:id**       | Actualizar un producto en la base de datos        
 
-| DELETE | **/productos/:id** | Para eliminar un producto                                                                                                                                                                                                        |
-                 |
+| DELETE | **/api/productos/:id** | Para eliminar un producto        
 
 
