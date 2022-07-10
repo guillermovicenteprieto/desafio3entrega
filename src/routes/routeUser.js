@@ -5,10 +5,8 @@ import { isAuth } from "../middlewares/isAuth.js";
 import allProducts from "../services/listProductsOnDB.js";
 const listProductsOnDB = allProducts;
 
-
 import multer from "multer";
 const upload = multer({ dest: "uploads/" });
-
 
 const routeUser = Router();
 
@@ -65,18 +63,17 @@ routeUser
       res.redirect('/login')
     })
 
-    .get('/logout', (req, res) => {
-      //const nombre = req.session.username
-      const nombre = req.user.username
-      req.session.destroy((err) => {
-        if (!err) {
-          logger.info(`Se registra petición GET /logout por ${nombre}`)
-          res.render('logout', { nombre });
-        } else {
-          logger.error(`Error al cerrar sesión por ${nombre}`)
-          res.json(err);
-        }
-      })
+  .get('/logout', (req, res) => {
+    const nombre = req.user.username
+    req.session.destroy((err) => {
+      if (!err) {
+        logger.info(`Se registra petición GET /logout por ${nombre}`)
+        res.render('logout', { nombre });
+      } else {
+        logger.error(`Error al cerrar sesión por ${nombre}`)
+        res.json(err);
+      }
     })
+  })
 
 export default routeUser;

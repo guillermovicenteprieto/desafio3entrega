@@ -65,7 +65,7 @@ class CartClass {
             throw err
         }
     }
-
+/*
     async addProductToCart(id, idProduct) {
         try {
             logger.info(`Se registra petición POST /api/carritos/${id}/productos/${idProduct}`)
@@ -80,8 +80,9 @@ class CartClass {
                 throw new Error('Product not found')
             }
             cart.products.push(product)
-
-            return
+            const cartActualizado = await Cart.findByIdAndUpdate(id, cart)
+            logger.info(`Se actualiza cart`)
+            return cartActualizado
         }
         catch (err) {
             logger.error(`Error al actualizar cart`)
@@ -89,7 +90,7 @@ class CartClass {
         }
     }
 
-
+*/
 
 
 
