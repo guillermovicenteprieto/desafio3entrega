@@ -8,8 +8,9 @@ https://desafio3entregaproyectofinal.herokuapp.com/ -->
 
 
 ## Rutas
-| Método | Endpoint                | Descripción                                                                                                                                                                                                                 |
-| ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+
+| METODO   | **ENDPOINT**          | DESCRIPCION                                                                                                                                                                                                 |
 
 | GET    | **/info**                | Muestra información relativa a la app 
 
