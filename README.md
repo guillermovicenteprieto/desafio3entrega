@@ -1,8 +1,6 @@
-### desafio 3 ENTREGA
+### Desafio: 3º Entrega Proyecto Final
 ### Proyecto deployado en Heroku:
 https://desafio3entregaproyectofinal.herokuapp.com/
-### desafio 3 ENTREGA
-
 
 #### working progress:
 
