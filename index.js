@@ -13,9 +13,9 @@ import logger from "./src/utils/loggers.js";
 import minimist from "minimist";
 import os from "os";
 import cluster from "cluster";
-import routerInfo from "./src/routes/routes.js";
-import routeProduct from "./src/routes/routeProduct.js"; 
 import routeCart from "./src/routes/routeCart.js";
+import routerInfo from "./src/routes/routeInfo.js";
+import routeProduct from "./src/routes/routeProduct.js";
 import routeUser from "./src/routes/routeUser.js";
 const numCPUs = os.cpus().length;
 const argv = minimist(process.argv.slice(2))

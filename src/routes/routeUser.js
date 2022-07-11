@@ -9,7 +9,7 @@ import multer from "multer";
 const upload = multer({ dest: "uploads/" });
 
 const routeUser = Router();
-
+/*============================[Rutas API: /]============================*/
 routeUser
 
   .get('/productos', isAuth, (req, res) => {
@@ -57,13 +57,13 @@ routeUser
     res.render('registro');
   })
 
-  .post('/registro', upload.single('file'), passport.authenticate('signup',
+  .post('/registro', upload.single('image'), passport.authenticate('signup',
     { failureRedirect: '/registro-error' }), (req, res) => {
       logger.info(`Se registra petición POST /registro`)
       res.redirect('/login')
     })
 
-  .get('/logout', (req, res) => {
+  .get('/logout', isAuth, (req, res) => {
     const nombre = req.user.username
     req.session.destroy((err) => {
       if (!err) {

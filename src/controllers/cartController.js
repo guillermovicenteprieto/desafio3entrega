@@ -28,6 +28,7 @@ class CartController {
             throw err
         }
     }
+
     async getCartById(req, res) {
         try {
             logger.info(`Se registra petición GET /api/carritos/${req.params.id}`)
@@ -41,6 +42,7 @@ class CartController {
             throw err
         }
     }
+
     async getCartProducts(req, res) {
         try {
             logger.info(`Se registra petición GET /api/carritos/${req.params.id}/productos`)
@@ -75,44 +77,40 @@ class CartController {
         }
     }
 
-    // async addProductToCart(req, res) {
-    //     try {
-    //         logger.info(`Se registra petición POST /api/carritos/${req.params.id}/productos/${req.params.idProduct}`)
-    //         const cart = await cartClass.getCartById(req.params.id)
-    //         const product = await productsClass.getProductById(req.params.idProduct)
-    //         const cartActualizado = await cartClass.addProductToCart(cart, product)
-    //         logger.info(`Se agrega producto al cart`)
-    //         res.json(cartActualizado)
-    //         return cartActualizado
-            
-    //     }
-    //     catch (err) {
-    //         logger.error(`Error al agregar producto al cart`)
-    //         throw err
-    //     }
-    // }
- 
+    async deleteCart(req, res) {
+        try {
+            logger.info(`Se registra petición DELETE /api/carritos/${req.params.id}`)
+            const cart = await cartClass.deleteCart(req.params.id)
+            logger.info(`Se elimina cart`)
+            res.json(cart)
+            return cart
+        }
+        catch (err) {
+            logger.error(`Error al eliminar cart`)
+            throw err
+        }
+    }
 
-    // async deleteCart(req, res) {
-    //     try {
-    //         logger.info(`Se registra petición DELETE /carts/${req.params.id}`)
-    //         const cartEliminado = await cartClass.deleteCart(id)
-    //         logger.info(`Se elimina cart`)
-    //         res.json(cartEliminado)
-    //         return cartEliminado
-    //     }
-    //     catch (err) {
-    //         logger.error(`Error al eliminar cart`)
-    //         throw err
-    //     }
-    // }
+    async addProductToCart(req, res) {
+        try {
+            logger.info(`Se registra petición POST /api/carritos/${req.params.id}/productos/${req.params.idProduct}`)
+            const product = await productsClass.getProductById(req.params.idProduct)
+            const cart = await cartClass.getCartById(req.params.id)
+            const cartWithProduct = await cartClass.addProductToCart(cart, product)
+            res.json (cartWithProduct)
+            return cartWithProduct
+        }
+        catch (err) {
+            logger.error(`Error al agregar producto al cart`)
+            throw err
+        }
+    }
+
 
     // async removeProductFromCart(id, product) {
     //     try {
     //         logger.info(`Se registra petición DELETE /carts/${id}/products/${product}`)
     //         const cart = await cartClass.removeProductFromCart(id, product)
-
-
     //         const producto = await Product.findById(product)
     //         cart.products.pull(producto)
     //         const cartActualizado = await cart.save()
@@ -125,26 +123,12 @@ class CartController {
     //     }
     // }
 
-    // async getCartProducts (id) {
-    //     try {
-    //         logger.info(`Se registra petición GET /carts/${id}/products`)
-    //         const cart = await Cart.findById(id)
-    //         logger.info(`Se obtiene cart`)
-    //         return cart.products
-    //     }
-    //     catch (err) {
-    //         logger.error(`Error al obtener cart`)
-    //         throw err
-    //     }
-    // }
 
     async getBuyerCart(id) {
         try {
             const TEST_MAIL = process.env.TEST_MAIL;
             const USER_MAIL_PASS = process.env.USER_MAIL_PASS;
-
             const cartBuyer = await Cart.findById(id)
-
             const products = await Promise.all(cartBuyer.products.map(async product => {
                 const producto = await Product.findById(product)
                 return producto
@@ -160,6 +144,7 @@ class CartController {
             throw err
         }
     }
+
     async sendSMS(id) {
         try {
             const cart = await this.getBuyerCart(id)
@@ -173,6 +158,7 @@ class CartController {
             throw err
         }
     }
+
     async sendMail(id) {
         try {
             const cart = await this.getBuyerCart(id)
@@ -186,6 +172,7 @@ class CartController {
             throw err
         }
     }
+    
     async sendWhatsapp(id) {
         try {
             const cart = await this.getBuyerCart(id)

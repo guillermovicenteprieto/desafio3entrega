@@ -1,9 +1,6 @@
 import { Router } from "express";
 import ProductController from '../controllers/productController.js';
 const productController = new ProductController();
-// import logger from "../utils/loggers.js";
-// import { Product } from "../models/Product.js";
-
 export const routeProduct = Router();
 
 /*====================[Rutas API: /api/productos]====================*/

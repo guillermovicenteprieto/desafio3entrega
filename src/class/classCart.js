@@ -5,7 +5,7 @@ import { Product } from '../models/Product.js'
 
 class CartClass {
 
-    constructor () {
+    constructor() {
         this.listProducts = []
     }
 
@@ -65,24 +65,13 @@ class CartClass {
             throw err
         }
     }
-/*
-    async addProductToCart(id, idProduct) {
+
+    async updateCart(id, cart) {
         try {
-            logger.info(`Se registra petición POST /api/carritos/${id}/productos/${idProduct}`)
-            const cart = await Cart.findById(id)
-            if (!cart) {
-                logger.error(`Error al actualizar cart`)
-                throw new Error('Cart not found')
-            }
-            const product = await Product.findById(idProduct)
-            if (!product) {
-                logger.error(`Error al actualizar cart`)
-                throw new Error('Product not found')
-            }
-            cart.products.push(product)
-            const cartActualizado = await Cart.findByIdAndUpdate(id, cart)
+            logger.info(`Se registra petición PUT /api/carritos/${id}`)
+            const carrito = await Cart.findByIdAndUpdate(id, cart, { new: true })
             logger.info(`Se actualiza cart`)
-            return cartActualizado
+            return carrito
         }
         catch (err) {
             logger.error(`Error al actualizar cart`)
@@ -90,7 +79,51 @@ class CartClass {
         }
     }
 
-*/
+
+    async addProductToCart(id, idProduct) {
+        try {
+            logger.info(`Se registra petición POST /carts/${id}/products/${idProduct}`)
+            const prodAdded =Cart.findById(req.params.id, (err, carrito) => {
+                if (err) {
+                    logger.error(`Error al obtener carrito`)
+                    res.json(err);
+                } else {
+                    Product.findById(req.params.idProduct, (err, product) => {
+                        if (err) {
+                            logger.error(`Error al obtener producto`)
+                            res.json(err);
+                        } else {
+                            carrito.products.push(product);
+                            carrito.save((err, carrito) => {
+                                if (err) {
+                                    logger.error(`Error al agregar producto al carrito`)
+                                    res.json(err);
+                                } else {
+                                    logger.info(`Se agrega producto al carrito`)
+                                    const cart = {
+                                        id: carrito.id,
+                                        name: carrito.name,
+                                        Date: carrito.Date,
+                                        user: carrito.user,
+                                        products: carrito.products
+                                    }
+                                    res.json({ cart, product });
+                                    return;
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+            
+        }
+        catch (err) {
+            logger.error(`Error al agregar producto al carrito`)
+            throw err
+        }
+    }
+
+
 
 
 
@@ -122,7 +155,6 @@ class CartClass {
     //         const product = await Product.findById(idProduct)
     //         cart.products.push(product)
     //         logger.info(`Se actualiza cart`)
-    //         res.json(cart)
     //         return cart
     //     }
     //     catch (err) {
@@ -130,6 +162,7 @@ class CartClass {
     //         throw err
     //     }
     // }
+
     async removeProductFromCart(id, product) {
         try {
             logger.info(`Se registra petición DELETE /carts/${id}/products/${product}`)

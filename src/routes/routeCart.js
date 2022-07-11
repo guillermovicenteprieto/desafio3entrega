@@ -16,10 +16,11 @@ const cartController = new CartController();
 export const routeCart = Router();
 
 /*============================[Rutas API: /api/carritos]============================*/
-routeCart.get("/carritos", cartController.getAllCarts);
+routeCart.get("/carritos", cartController.getAllCarts); 
 routeCart.get("/carritos/:id", cartController.getCartById);
-routeCart.get("/carritos/:id/productos", cartController.getCartProducts);
-routeCart.post("/carritos", cartController.createCart);
+routeCart.get("/carritos/:id/productos", cartController.getCartProducts);//
+routeCart.post("/carritos", cartController.createCart); //
+routeCart.delete("/carritos/:id", cartController.deleteCart);//
 
 
 /*rutas que no funcionan desde controllers...*/
@@ -85,21 +86,6 @@ routeCart.post('/carritos/:id/productos/:idProduct', (req, res) => {
                     })
                 }
             })
-        }
-    })
-})
-
-//routeCart.delete("/carritos/:id", cartController.deleteCart);
-routeCart.delete("/carritos/:id", (req, res) => {
-    logger.info(`Se registra petición DELETE /carritos/${req.params.id}`)
-    Cart.findByIdAndDelete(req.params.id, (err, carrito) => {
-        if (err) {
-            logger.error(`Error al eliminar carrito`)
-            res.json(err);
-        } else {
-            logger.info(`Se elimina carrito`)
-            res.json(carrito);
-            return
         }
     })
 })
