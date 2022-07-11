@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import logger from '../utils/loggers.js'
 import { Cart } from '../models/Cart.js'
 import { Product } from '../models/Product.js'
@@ -52,16 +51,65 @@ class CartClass {
         }
     }
 
-
     async createCart(cart) {
         try {
             logger.info(`Se registra petición POST /api/carritos`)
             const carrito = await Cart.create(cart)
             logger.info(`Se crea cart`)
-            return carrito
+            const carro = {
+                id: carrito._id,
+                products: carrito.products,
+                name: carrito.name,
+            }
+            return carro
         }
         catch (err) {
             logger.error(`Error al crear cart`)
+            throw err
+        }
+    }
+
+    
+    async addProductToCart(id, idProduct) {
+        try {
+            logger.info(`Se registra petición POST /api/carritos/${id}/productos/${idProduct}`)
+            const cart = await Cart.findById(id)
+            const product = await Product.findById(idProduct)
+            cart.products.push(product)
+            cart.save((err, carrito) => {
+                if (err) {
+                    logger.error(`Error al agregar producto al carrito`)
+                    throw err
+                } else {
+                    logger.info(`Se agrega producto al carrito`)
+                    return carrito
+                }
+            })
+        } catch (err) {
+            logger.error(`Error al agregar producto al carrito`)
+            throw err
+        }
+    }
+
+    
+    async removeProductFromCart(id, idProduct) {
+        try {
+            logger.info(`Se registra petición DELETE /api/carritos/${id}/productos/${idProduct}`)
+            const cart = await Cart.findById(id)
+            const product = await Product.findById(idProduct)
+            cart.products.pull(product)
+            cart.save((err, carrito) => {
+                if (err) {
+                    logger.error(`Error al eliminar producto del carrito`)
+                    throw err
+                } else {
+                    logger.info(`Se elimina producto del carrito`)
+                    return carrito
+                }
+            })
+        }
+        catch (err) {
+            logger.error(`Error al eliminar producto del carrito`)
             throw err
         }
     }
@@ -80,62 +128,6 @@ class CartClass {
     }
 
 
-    async addProductToCart(id, idProduct) {
-        try {
-            logger.info(`Se registra petición POST /carts/${id}/products/${idProduct}`)
-            const prodAdded =Cart.findById(req.params.id, (err, carrito) => {
-                if (err) {
-                    logger.error(`Error al obtener carrito`)
-                    res.json(err);
-                } else {
-                    Product.findById(req.params.idProduct, (err, product) => {
-                        if (err) {
-                            logger.error(`Error al obtener producto`)
-                            res.json(err);
-                        } else {
-                            carrito.products.push(product);
-                            carrito.save((err, carrito) => {
-                                if (err) {
-                                    logger.error(`Error al agregar producto al carrito`)
-                                    res.json(err);
-                                } else {
-                                    logger.info(`Se agrega producto al carrito`)
-                                    const cart = {
-                                        id: carrito.id,
-                                        name: carrito.name,
-                                        Date: carrito.Date,
-                                        user: carrito.user,
-                                        products: carrito.products
-                                    }
-                                    res.json({ cart, product });
-                                    return;
-                                }
-                            })
-                        }
-                    })
-                }
-            })
-            
-        }
-        catch (err) {
-            logger.error(`Error al agregar producto al carrito`)
-            throw err
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     async deleteCart(id) {
         try {
             logger.info(`Se registra petición DELETE /carts/${id}`)
@@ -148,37 +140,6 @@ class CartClass {
             throw err
         }
     }
-    // async addProductToCart(id, idProduct) {
-    //     try {
-    //         logger.info(`Se registra petición POST /carts/${id}/productos/${idProduct}`)
-    //         const cart = await Cart.findById(id)
-    //         const product = await Product.findById(idProduct)
-    //         cart.products.push(product)
-    //         logger.info(`Se actualiza cart`)
-    //         return cart
-    //     }
-    //     catch (err) {
-    //         logger.error(`Error al actualizar cart`)
-    //         throw err
-    //     }
-    // }
-
-    async removeProductFromCart(id, product) {
-        try {
-            logger.info(`Se registra petición DELETE /carts/${id}/products/${product}`)
-            const cart = await Cart.findById(id)
-            const product = await Product.findById(product)
-            cart.products.pull(product)
-            const cartActualizado = await Cart.findByIdAndUpdate(id, cart)
-            logger.info(`Se actualiza cart`)
-            return cartActualizado
-        }
-        catch (err) {
-            logger.error(`Error al actualizar cart`)
-            throw err
-        }
-    }
-
 }
 
 export default CartClass

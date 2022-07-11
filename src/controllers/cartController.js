@@ -1,12 +1,15 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import CartClass from "../class/classCart.js";
 const cartClass = new CartClass();
 import ProductsClass from "../class/classProducts.js";
 const productsClass = new ProductsClass();
+
 import logger from "../utils/loggers.js";
 import { Cart } from "../models/Cart.js";
 import { Product } from "../models/Product.js";
+import { User } from "../models/User.js";
 import sendSMS from "../utils/messageSMS.js";
 import sendMail from "../utils/messageEmailEthereal.js";
 import sendWhatsapp from "../utils/messageWhatsApp.js";
@@ -77,6 +80,33 @@ class CartController {
         }
     }
 
+    async addProductToCart(req, res) {
+        try {
+            logger.info(`Se registra petición POST /api/carritos/${req.params.id}/productos/${req.params.idProduct}`)
+            const cart = await cartClass.addProductToCart(req.params.id, req.params.idProduct)
+            logger.info(`Se agrega producto al carrito`)
+            res.json(cart)
+            return cart
+        }
+        catch (err) {
+            logger.error(`Error al agregar producto al carrito`)
+            throw err
+        }
+    }
+
+    async removeProductFromCart(req, res) {
+        try {
+            logger.info(`Se registra petición DELETE /api/carritos/${req.params.id}/productos/${req.params.idProduct}`)
+            const cart = await cartClass.removeProductFromCart(req.params.id, req.params.idProduct)
+            logger.info(`Se elimina producto del cart`)
+            res.json(cart)
+            return cart
+        } catch (err) {
+            logger.error(`Error al eliminar producto del cart`)
+            throw err
+        }
+    }
+
     async deleteCart(req, res) {
         try {
             logger.info(`Se registra petición DELETE /api/carritos/${req.params.id}`)
@@ -90,39 +120,6 @@ class CartController {
             throw err
         }
     }
-
-    async addProductToCart(req, res) {
-        try {
-            logger.info(`Se registra petición POST /api/carritos/${req.params.id}/productos/${req.params.idProduct}`)
-            const product = await productsClass.getProductById(req.params.idProduct)
-            const cart = await cartClass.getCartById(req.params.id)
-            const cartWithProduct = await cartClass.addProductToCart(cart, product)
-            res.json (cartWithProduct)
-            return cartWithProduct
-        }
-        catch (err) {
-            logger.error(`Error al agregar producto al cart`)
-            throw err
-        }
-    }
-
-
-    // async removeProductFromCart(id, product) {
-    //     try {
-    //         logger.info(`Se registra petición DELETE /carts/${id}/products/${product}`)
-    //         const cart = await cartClass.removeProductFromCart(id, product)
-    //         const producto = await Product.findById(product)
-    //         cart.products.pull(producto)
-    //         const cartActualizado = await cart.save()
-    //         logger.info(`Se elimina producto del cart`)
-    //         return cartActualizado
-    //     }
-    //     catch (err) {
-    //         logger.error(`Error al eliminar producto del cart`)
-    //         throw err
-    //     }
-    // }
-
 
     async getBuyerCart(id) {
         try {
@@ -172,7 +169,7 @@ class CartController {
             throw err
         }
     }
-    
+
     async sendWhatsapp(id) {
         try {
             const cart = await this.getBuyerCart(id)
@@ -187,4 +184,5 @@ class CartController {
         }
     }
 }
+
 export default CartController

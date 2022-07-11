@@ -9,6 +9,7 @@ import multer from "multer";
 const upload = multer({ dest: "uploads/" });
 
 const routeUser = Router();
+
 /*============================[Rutas API: /]============================*/
 routeUser
 
@@ -16,8 +17,10 @@ routeUser
     if (req.user.username) {
       const nombre = req.user.username
       const email = req.user.email
+      const id = req.user._id
+      const imagen = req.user.image || '../uploads/img1.png'
       logger.info(`Se registra petición GET /productos por ${nombre}`)
-      res.render('products', { listProductsOnDB, nombre, email })
+      res.render('products', { listProductsOnDB, nombre, email, id, imagen })
     } else {
       logger.info(`Se registra petición GET /productos pero no esta autenticado, se redirige a /login`)
       res.redirect('/login')

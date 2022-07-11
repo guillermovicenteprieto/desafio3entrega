@@ -14,14 +14,13 @@ export const Cart = mongoose.model('carts', new mongoose.Schema({
     Date: {
         type: Date
     },
-    user: {
+    user: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
+    }],
 
     products: [{
         type: Schema.Types.ObjectId,
         ref: 'Product'
     }]
 }));
-
