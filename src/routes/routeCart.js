@@ -9,6 +9,8 @@ import { User } from "../models/User.js";
 import sendSMS from "../utils/messageSMS.js";
 import sendMail from "../utils/messageEmailEthereal.js";
 import sendWhatsapp from "../utils/messageWhatsApp.js";
+const PHONE_TEST = process.env.PHONE
+const TEST_MAIL_ETHEREAL='wyatt.luettgen92@ethereal.email'
 
 import { Router } from "express";
 
@@ -21,35 +23,34 @@ routeCart.get("/carritos", cartController.getAllCarts);
 routeCart.get("/carritos/:id", cartController.getCartById);
 routeCart.get("/carritos/:id/productos", cartController.getCartProducts);
 routeCart.post("/carritos", cartController.createCart);
-routeCart.delete("/carritos/:id", cartController.deleteCart);
 routeCart.post("/carritos/:id/productos/:idProduct", cartController.addProductToCart);
+routeCart.delete("/carritos/:id", cartController.deleteCart);
 routeCart.delete("/carritos/:id/productos/:idProduct", cartController.removeProductFromCart);
 
 
-routeCart.get('/carritos/comprar/:id/user/:idUser', async (req, res) => {
+routeCart.get('/carritos/compra/:id/user/:idUser', async (req, res) => {
     try {
-        logger.info(`Se registra petición GET /api/carrito/comprar/${req.params.id}/user/${req.params.idUser}`)
-        const cart = await Cart.findById(req.params.id)
-        const user = await User.findById(req.params.idUser)
-        const products = await Promise.all(cart.products.map(async product => {
-            return await Product.findById(product)
-        }
-        ))
-        // const total = products.reduce((total, product) => {
-        //     return total + product.price
-        // }, 0)
-        // const message = `Hola ${user.name}, tu compra ha sido exitosa. El total es de ${total}`
-        // sendSMS(user.phone, message)
-        // sendMail(user.email, message)
-        // sendWhatsapp(user.phone, message)
-        // logger.info(`Se envía mensaje de texto, correo electrónico y whatsapp`)
-        cart.push(user)
-        cart.save()
-        res.json(cart)
-        return cart
-    } catch (err) {
-        logger.error(`Error al obtener cart`)
-        throw err
+        const cart = await Cart.findById(req.params.id);
+        const user = await User.findById(req.params.idUser);
+        const products = await Product.find({ _id: { $in: cart.products } });
+        const total = products.reduce((total, product) => total + product.price, 0);
+        const message = `Hola ${user.username}, tu compra ha sido realizada con éxito. Ver detalle >`; 
+        const detalle = `El total es de la compra es $ ${total}. Detalle de la compra: ${products.map(product => `${product.name} - ${product.price}`).join(', ')}`;
+
+
+        sendMail(TEST_MAIL_ETHEREAL, message, detalle);
+
+        res.json({
+            message: 'Compra realizada con éxito',
+            cart: cart,
+            user: user,
+            products: products,
+            total: total
+        });
+
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error al realizar la compra" });
     }
 })
 

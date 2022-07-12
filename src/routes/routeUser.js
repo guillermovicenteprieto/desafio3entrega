@@ -18,7 +18,7 @@ routeUser
       const nombre = req.user.username
       const email = req.user.email
       const id = req.user._id
-      const imagen = req.user.image || '../uploads/img1.png'
+      const imagen = req.user.image || '../../img/paisajes naturales fotos nuevas (10).jpg'
       logger.info(`Se registra petición GET /productos por ${nombre}`)
       res.render('products', { listProductsOnDB, nombre, email, id, imagen })
     } else {
