@@ -57,7 +57,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Producto #005\",\r\n    \"price\": 6000,\r\n    \"stock\": 100,\r\n    \"description\": \"Descripción de Producto #005\",\r\n    \"image\": \"https://via.placeholder.com/200\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Producto #006\",\r\n    \"price\": 6000,\r\n    \"stock\": 100,\r\n    \"description\": \"Descripción de Producto #006\",\r\n    \"image\": \"https://via.placeholder.com/200\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -214,6 +214,37 @@
 					"response": []
 				},
 				{
+					"name": "http://localhost:8080/api/carritos/compra/id:/user/:idUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carritos/compra/62ca6ab121d5d9f82c36ca91/user/62c20bb62fb00120e0907522",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"compra",
+								"62ca6ab121d5d9f82c36ca91",
+								"user",
+								"62c20bb62fb00120e0907522"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "http://localhost:8080/api/carritos",
 					"request": {
 						"method": "POST",
@@ -252,7 +283,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/carritos/62ca8239302d86f14065ac3f/productos/62c4bdf48435dbcacac3316e",
+							"raw": "http://localhost:8080/api/carritos/62cc9c7595d9bc9c82117b1e/productos/62cc9b10f212fc2f674f0c82",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -261,9 +292,9 @@
 							"path": [
 								"api",
 								"carritos",
-								"62ca8239302d86f14065ac3f",
+								"62cc9c7595d9bc9c82117b1e",
 								"productos",
-								"62c4bdf48435dbcacac3316e"
+								"62cc9b10f212fc2f674f0c82"
 							]
 						}
 					},
