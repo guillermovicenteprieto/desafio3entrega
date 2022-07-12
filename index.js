@@ -23,16 +23,6 @@ const serverMode = argv.mode || "FORK";
 
 const app = express();
 
-
-import sendEmail from "./src/utils/messageEmailEthereal.js";
-//sendEmail();
-import sendEmailGoogle from "./src/utils/messageEmailGoogle.js";
-// sendEmailGoogle();
-import sendSMS from "./src/utils/messageSMS.js";
-// sendSMS();
-import sendWhatsApp from "./src/utils/messageWhatsApp.js";
-//sendWhatsApp();
-
 /*============================[Middlewares]============================*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -47,7 +37,7 @@ app.use(session({
   cookie: {
     httpOnly: false,
     secure: false,
-    maxAge: Number(process.env.EXPIRATION_TIME) || 60 * 60 * 1000
+    maxAge: Number(process.env.EXPIRATION_TIME) || 60 * 60 * 10000
   },
 }));
 

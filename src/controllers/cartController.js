@@ -9,10 +9,10 @@ const productsClass = new ProductsClass();
 import logger from "../utils/loggers.js";
 import { Cart } from "../models/Cart.js";
 import { Product } from "../models/Product.js";
-import { User } from "../models/User.js";
-import sendSMS from "../utils/messageSMS.js";
-import sendMail from "../utils/messageEmailEthereal.js";
-import sendWhatsapp from "../utils/messageWhatsApp.js";
+// import { User } from "../models/User.js";
+// import sendSMS from "../utils/messageSMS.js";
+// import sendMail from "../utils/messageEmailEthereal.js";
+// import sendWhatsapp from "../utils/messageWhatsApp.js";
 
 class CartController {
     constructor() {
@@ -120,69 +120,69 @@ class CartController {
             throw err
         }
     }
+    /*resolver!*/
+    // async getBuyerCart(id) {
+    //     try {
+    //         const TEST_MAIL = process.env.TEST_MAIL;
+    //         const USER_MAIL_PASS = process.env.USER_MAIL_PASS;
+    //         const cartBuyer = await Cart.findById(id)
+    //         const products = await Promise.all(cartBuyer.products.map(async product => {
+    //             const producto = await Product.findById(product)
+    //             return producto
+    //         }
+    //         ))
+    //         const total = products.reduce((total, product) => total + product.price, 0)
+    //         const cart = new CartClass(cartBuyer.id, cartBuyer.buyer, cartBuyer.products, total)
+    //         return cart
 
-    async getBuyerCart(id) {
-        try {
-            const TEST_MAIL = process.env.TEST_MAIL;
-            const USER_MAIL_PASS = process.env.USER_MAIL_PASS;
-            const cartBuyer = await Cart.findById(id)
-            const products = await Promise.all(cartBuyer.products.map(async product => {
-                const producto = await Product.findById(product)
-                return producto
-            }
-            ))
-            const total = products.reduce((total, product) => total + product.price, 0)
-            const cart = new CartClass(cartBuyer.id, cartBuyer.buyer, cartBuyer.products, total)
-            return cart
+    //     }
+    //     catch (err) {
+    //         logger.error(`Error al obtener cart`)
+    //         throw err
+    //     }
+    // }
 
-        }
-        catch (err) {
-            logger.error(`Error al obtener cart`)
-            throw err
-        }
-    }
+    // async sendSMS(id) {
+    //     try {
+    //         const cart = await this.getBuyerCart(id)
+    //         const message = `Hola ${cart.buyer.name}, tu compra ha sido realizada con éxito. El total es de ${cart.total}`
+    //         const phone = cart.buyer.phone
+    //         sendSMS(message, phone)
+    //         logger.info(`Se envía SMS`)
+    //     }
+    //     catch (err) {
+    //         logger.error(`Error al enviar SMS`)
+    //         throw err
+    //     }
+    // }
 
-    async sendSMS(id) {
-        try {
-            const cart = await this.getBuyerCart(id)
-            const message = `Hola ${cart.buyer.name}, tu compra ha sido realizada con éxito. El total es de ${cart.total}`
-            const phone = cart.buyer.phone
-            sendSMS(message, phone)
-            logger.info(`Se envía SMS`)
-        }
-        catch (err) {
-            logger.error(`Error al enviar SMS`)
-            throw err
-        }
-    }
+    // async sendMail(id) {
+    //     try {
+    //         const cart = await this.getBuyerCart(id)
+    //         const message = `Hola ${cart.buyer.name}, tu compra ha sido realizada con éxito. El total es de ${cart.total}`
+    //         const mail = cart.buyer.mail
+    //         sendMail(message, mail)
+    //         logger.info(`Se envía mail`)
+    //     }
+    //     catch (err) {
+    //         logger.error(`Error al enviar mail`)
+    //         throw err
+    //     }
+    // }
 
-    async sendMail(id) {
-        try {
-            const cart = await this.getBuyerCart(id)
-            const message = `Hola ${cart.buyer.name}, tu compra ha sido realizada con éxito. El total es de ${cart.total}`
-            const mail = cart.buyer.mail
-            sendMail(message, mail)
-            logger.info(`Se envía mail`)
-        }
-        catch (err) {
-            logger.error(`Error al enviar mail`)
-            throw err
-        }
-    }
-
-    async sendWhatsapp(id) {
-        try {
-            const cart = await this.getBuyerCart(id)
-            const message = `Hola ${cart.buyer.name}, tu compra ha sido realizada con éxito. El total es de ${cart.total}`
-            const phone = cart.buyer.phone
-            sendWhatsapp(message, phone)
-            logger.info(`Se envía Whatsapp`)
-        }
-        catch (err) {
-            logger.error(`Error al enviar Whatsapp`)
-            throw err
-        }
-    }
+    // async sendWhatsapp(id) {
+    //     try {
+    //         const cart = await this.getBuyerCart(id)
+    //         const message = `Hola ${cart.buyer.name}, tu compra ha sido realizada con éxito. El total es de ${cart.total}`
+    //         const phone = cart.buyer.phone
+    //         sendWhatsapp(message, phone)
+    //         logger.info(`Se envía Whatsapp`)
+    //     }
+    //     catch (err) {
+    //         logger.error(`Error al enviar Whatsapp`)
+    //         throw err
+    //     }
+    // }
 }
 
 export default CartController

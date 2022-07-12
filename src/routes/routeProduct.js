@@ -10,5 +10,4 @@ routeProduct.get("/productos/:id", productController.getProductById);
 routeProduct.put("/productos/:id", productController.updateProduct);
 routeProduct.delete("/productos/:id", productController.deleteProduct);
 
-
 export default routeProduct;

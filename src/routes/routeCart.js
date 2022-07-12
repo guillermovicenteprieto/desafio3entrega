@@ -1,8 +1,5 @@
-
 import dotenv from "dotenv";
 dotenv.config();
-
-import logger from "../utils/loggers.js";
 import { Cart } from "../models/Cart.js";
 import { Product } from "../models/Product.js";
 import { User } from "../models/User.js";
@@ -12,10 +9,10 @@ import sendWhatsapp from "../utils/messageWhatsApp.js";
 const PHONE_TEST = process.env.PHONE
 const TEST_MAIL_ETHEREAL='wyatt.luettgen92@ethereal.email'
 const WSPHONE = process.env.WSPHONE
-import { Router } from "express";
 
 import CartController from "../controllers/cartController.js";
 const cartController = new CartController();
+import { Router } from "express";
 export const routeCart = Router();
 
 /*============================[Rutas API: /api/carritos]============================*/
@@ -36,6 +33,10 @@ routeCart.get('/carritos/compra/:id/user/:idUser', async (req, res) => {
         const total = products.reduce((total, product) => total + product.price, 0);
         const message = `Hola ${user.username}, tu compra ha sido realizada con éxito. Ver detalle >`; 
         const detalle = `El total es de la compra es $ ${total}. Detalle de la compra: ${products.map(product => `${product.name} - ${product.price}`).join(', ')}`;
+
+        //sendSMS(user.phone, message, detalle);
+        //sendMail(user.email, message, detalle);
+        //sendWhatsapp(WSPHONE, message, detalle);
 
         sendMail(TEST_MAIL_ETHEREAL, message, detalle);
         sendSMS(PHONE_TEST, message, detalle);

@@ -68,7 +68,6 @@ class CartClass {
             throw err
         }
     }
-
     
     async addProductToCart(id, idProduct) {
         try {
@@ -90,7 +89,6 @@ class CartClass {
             throw err
         }
     }
-
     
     async removeProductFromCart(id, idProduct) {
         try {
@@ -126,7 +124,6 @@ class CartClass {
             throw err
         }
     }
-
 
     async deleteCart(id) {
         try {

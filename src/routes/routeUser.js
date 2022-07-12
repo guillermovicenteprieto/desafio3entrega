@@ -4,7 +4,6 @@ import passport from "passport";
 import { isAuth } from "../middlewares/isAuth.js";
 import allProducts from "../services/listProductsOnDB.js";
 const listProductsOnDB = allProducts;
-
 import multer from "multer";
 const upload = multer({ dest: "uploads/" });
 

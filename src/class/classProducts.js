@@ -1,7 +1,5 @@
-import mongoose from 'mongoose'
 import logger from '../utils/loggers.js'
 import { Product } from '../models/Product.js'
-
 class ProductsClass {
   
   constructor () {
@@ -59,6 +57,7 @@ class ProductsClass {
       throw err
     }
   }
+
   async deleteProduct (id) {
     try {
       logger.info(`Se registra petición DELETE /api/productos/${id}`)
@@ -71,7 +70,6 @@ class ProductsClass {
       throw err
     }
   }
-
 }
 
 export default ProductsClass

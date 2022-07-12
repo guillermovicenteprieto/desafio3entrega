@@ -25,7 +25,7 @@ export const signupStrategy = new Strategy(
             if (user) return done(null, false)
             const newUser = {
                 name: req.body.name,
-                lastname: req.body.lastname,
+                lastname: req.body.lastName,
                 adress: req.body.adress,
                 age: req.body.age,
                 phone: req.body.phone,

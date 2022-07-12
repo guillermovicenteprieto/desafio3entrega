@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import logger from '../utils/loggers.js'
 import { User } from '../models/User.js'
 
@@ -81,31 +80,4 @@ class UserClass {
         }
     }
 
-
-
-
-
 }
-
-
-
-
-/*
-class ProductsClass {
-    constructor () {
-      this.listProducts = []
-    }
-    async getAllProducts () {
-      try {
-        logger.info(`Se registra petición GET /productos`)
-        const productos = await Product.find({})
-        logger.info(`Se obtienen productos`)
-        return productos
-      }
-      catch (err) {
-        logger.error(`Error al obtener productos`)
-        throw err
-      }
-    }
-
-    */

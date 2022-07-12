@@ -11,7 +11,7 @@ const allProducts = listProducts.map
       stock: producto.stock,
       description: producto.description,
       url: producto.url,
-      image: producto.url,
+      image: producto.image,
       category: producto.category,
       timestamp: producto.timestamp
     }
