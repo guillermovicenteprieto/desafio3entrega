@@ -56,3 +56,7 @@ https://desafio3entregaproyectofinal.herokuapp.com/
 |    DELETE   | **/api/carritos/:id**   | Elimina un carrito de la base de datos según su id
 
 |    DELETE   | **/api/carritos/:id/productos/idProduto**   | Elimina un producto del carrito según su id
+
+
+|    GET   | **/api/carritos/compra/:id/user/idUser**   | Finaliza la compra de un carrito según su id y el id del usuario y envia un correo con los datos de la compra
+
