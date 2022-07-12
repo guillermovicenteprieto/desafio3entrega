@@ -20,13 +20,13 @@ const sendEmail = async (email, message, detalle) => {
         subject: message,
         html: `<h1>${detalle}</h1>`,
         text: 'Mensaje de bienvenida, mensaje enviado a través de Nodemailer',
-        attachments: [
-            {
-                filename: 'archivo.txt',
-                content: 'Contenido del archivo',
-                contentType: 'text/plain'
-            }
-        ]
+        // attachments: [
+        //     {
+        //         filename: 'archivo.txt',
+        //         content: 'Contenido del archivo',
+        //         contentType: 'text/plain'
+        //     }
+        // ]
     }
     try {
         const info = await transporter.sendMail(mailOptions)

@@ -7,14 +7,14 @@ const authToken = process.env.TWILIO_AUTH_TOKEN
 const PHONE = process.env.PHONE
 const client = twilio(accountSid, authToken)
 
-const sendSMS = async (phone, text) => {
+const sendSMS = async (phone, message, detalle) => {
    try {
-      const message = await client.messages.create({
-         body: 'Hola! esta es una bienvenida! mensaje enviado desde Nodejs + Twilio! 🛰️',
+      const messages = await client.messages.create({
+         body: message + ' ' + detalle,
          from: '+19707177273',
          to: PHONE
       })
-      console.log(message)
+      console.log(messages)
    } catch (error) {
       console.log(error)
    }

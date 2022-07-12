@@ -11,7 +11,7 @@ import sendMail from "../utils/messageEmailEthereal.js";
 import sendWhatsapp from "../utils/messageWhatsApp.js";
 const PHONE_TEST = process.env.PHONE
 const TEST_MAIL_ETHEREAL='wyatt.luettgen92@ethereal.email'
-
+const WSPHONE = process.env.WSPHONE
 import { Router } from "express";
 
 import CartController from "../controllers/cartController.js";
@@ -37,8 +37,9 @@ routeCart.get('/carritos/compra/:id/user/:idUser', async (req, res) => {
         const message = `Hola ${user.username}, tu compra ha sido realizada con éxito. Ver detalle >`; 
         const detalle = `El total es de la compra es $ ${total}. Detalle de la compra: ${products.map(product => `${product.name} - ${product.price}`).join(', ')}`;
 
-
         sendMail(TEST_MAIL_ETHEREAL, message, detalle);
+        sendSMS(PHONE_TEST, message, detalle);
+        sendWhatsapp(WSPHONE, message, detalle);
 
         res.json({
             message: 'Compra realizada con éxito',
