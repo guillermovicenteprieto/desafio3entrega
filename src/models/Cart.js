@@ -3,22 +3,29 @@ const Schema = mongoose.Schema;
 import { Product } from "./Product.js";
 import { User } from "./User.js";
 
-export const Cart = mongoose.model('carts', new mongoose.Schema({
+export const Cart = mongoose.model(
+  "carts",
+  new mongoose.Schema({
     id: {
-        type: Number
+      type: Number,
     },
     name: {
-        type: String
+      type: String,
     },
     Date: {
-        type: Date
+      type: Date,
     },
-    user: [{
+    user: [
+      {
         type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    products: [{
+        ref: "User",
+      },
+    ],
+    products: [
+      {
         type: Schema.Types.ObjectId,
-        ref: 'Product'
-    }]
-}));
+        ref: "Product",
+      },
+    ],
+  })
+);

@@ -1,62 +1,55 @@
 ### Desafio: Dividiendo el Proyecto en capas
+
 ### Proyecto deployado en Heroku:
+
 https://desafio3entregaproyectofinal.herokuapp.com/
 
 #### working progress:
 
 ## Rutas
 
+| METODO | **ENDPOINT** | DESCRIPCION
 
-|   METODO    | **ENDPOINT**           | DESCRIPCION                                                         
+| GET | **/info** | Muestra información relativa a la app
 
-|     GET     | **/info**                | Muestra información relativa a la app 
+| GET | **/productos-test** | Página de testeo, devuelve listado de 5 productos mock generados con **Faker.js**
 
-|     GET     |  **/productos-test**      | Página de testeo, devuelve listado de 5 productos mock generados con **Faker.js** 
+| GET | **/** | Dirige a la página de inicio de la aplicación
 
+| GET | **/login** | Página de inicio de la aplicación
 
+| POST | **/login** | Comprueba datos de usuario y devuelve una página de ingreso y bienvenida.
 
-|     GET     |  **/**                    | Dirige a la página de inicio de la aplicación 
+| GET | **/registro** | Formulario de registro de usuario.
 
-|     GET     |  **/login**               | Página de inicio de la aplicación
+| POST | **/registro** | Permite registrarse. Las sesesiones son almacenadas en mongoAtlas
 
-|     POST    |  **/login**              | Comprueba datos de usuario y devuelve una página de ingreso y bienvenida.  
+| GET | **/logout** | Se accede tras clicker al boton 'deslogear' y luego de 2 segundos redirige a /login.
 
-|     GET     |  **/registro**            | Formulario de registro de usuario. 
+| GET | **/productos** | Lista los productos disponibles. Redirecciona luego de realizar el LOGIN.
 
-|     POST    |  **/registro**           | Permite registrarse. Las sesesiones son almacenadas en mongoAtlas  
+| GET | **/api/productos** | Lista todos los productos disponibles
 
-|     GET     |  **/logout**              | Se accede tras clicker al boton 'deslogear' y luego de 2 segundos redirige a /login. 
+| GET | **/api/productos/:id** | Muestra un producto según su id
 
-|     GET     |  **/productos**           | Lista los productos disponibles. Redirecciona luego de realizar el LOGIN. 
+| POST | **/api/productos** | Permite incorporar un producto a la base de datos
 
+| PUT | **/api/productos/:id** | Actualizar un producto en la base de datos según su id
 
+| DELETE | **/api/productos/:id** | Eliminar un producto de la base de datos según su id
 
-|     GET     |  **/api/productos**       | Lista todos los productos disponibles     
+| GET | **/api/carritos** | Lista los carritos disponibles
 
-|     GET     |  **/api/productos/:id**   | Muestra un producto según su id   
+| GET | **/api/carritos/:id** | Muestra un carrito según su id
 
-|     POST    |  **/api/productos**       | Permite incorporar un producto a la base de datos       
+| GET | **/api/carritos/:id/productos** | Muestra los productos de un carrito según su id
 
-|     PUT     | **/api/productos/:id**   | Actualizar un producto en la base de datos según su id     
+| POST | **/api/carritos** | Permite incorporar un carrito a la base de datos
 
-|    DELETE   | **/api/productos/:id**   | Eliminar un producto de la base de datos según su id
+| POST | **/api/carritos/:id/productos/idProducto** | Permite incorporar producto al carrito según su id
 
+| DELETE | **/api/carritos/:id** | Elimina un carrito de la base de datos según su id
 
+| DELETE | **/api/carritos/:id/productos/idProduto** | Elimina un producto del carrito según su id
 
-|     GET     |  **/api/carritos**        | Lista los carritos disponibles     
-
-|     GET     |  **/api/carritos/:id**    | Muestra un carrito según su id   
-
-|     GET     |  **/api/carritos/:id/productos**   | Muestra los productos de un carrito según su id  
-
-|     POST    |  **/api/carritos**        | Permite incorporar un carrito a la base de datos   
-
-|     POST    |  **/api/carritos/:id/productos/idProducto**        | Permite incorporar producto al carrito según su id   
-
-|    DELETE   | **/api/carritos/:id**   | Elimina un carrito de la base de datos según su id
-
-|    DELETE   | **/api/carritos/:id/productos/idProduto**   | Elimina un producto del carrito según su id
-
-
-|    GET   | **/api/carritos/compra/:id/user/idUser**   | Finaliza la compra de un carrito según su id y el id del usuario y envia un correo con los datos de la compra, además de un sms y un mensaje vía WhatsApp.
-
+| GET | **/api/carritos/compra/:id/user/idUser** | Finaliza la compra de un carrito según su id y el id del usuario y envia un correo con los datos de la compra, además de un sms y un mensaje vía WhatsApp.

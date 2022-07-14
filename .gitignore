@@ -6,3 +6,4 @@ logsData
 dbDAO.js
 mariaDB.js
 nodemon.json
+server.js

@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
-export const Product = mongoose.model('product', new mongoose.Schema({
+export const Product = mongoose.model(
+  "product",
+  new mongoose.Schema({
     timestamp: { type: Date, default: Date.now },
     name: { type: String },
     price: { type: Number },
@@ -10,4 +12,5 @@ export const Product = mongoose.model('product', new mongoose.Schema({
     code: { type: String },
     // image: { type: String, required: true },
     // category: { type: String, required: true }
-}));
+  })
+);
