@@ -11,7 +11,7 @@ https://desafio3entregaproyectofinal.herokuapp.com/
 
 |     GET     | **/info**                | Muestra información relativa a la app 
 
-|     GET     |  **/productos-test**      | Página de testeo, devuelve listado de 7 productos mock generados con **Faker.js** 
+|     GET     |  **/productos-test**      | Página de testeo, devuelve listado de 5 productos mock generados con **Faker.js** 
 
 
 

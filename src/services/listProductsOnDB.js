@@ -1,6 +1,5 @@
-import ProductsClass from "../class/classProducts.js";
-const productsClass = new ProductsClass();
-const listProducts = await productsClass.getAllProducts()
+import productClass from "../class/classProduct.js";
+const listProducts = await productClass.getAllProducts()
 
 const allProducts = listProducts.map
   (producto => {

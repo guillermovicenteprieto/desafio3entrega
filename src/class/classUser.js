@@ -1,7 +1,7 @@
 import logger from '../utils/loggers.js'
 import { User } from '../models/User.js'
 
-class UserClass {
+class userClass {
     constructor () {
         this.listUsers = []
     }
@@ -17,18 +17,7 @@ class UserClass {
             throw err
         }
     }
-    async createUser (user) {
-        try {
-            logger.info(`Se registra petición POST /users`)
-            const userCreado = await User.create(user)
-            logger.info(`Se crea user`)
-            return userCreado
-        }
-        catch (err) {
-            logger.error(`Error al crear user`)
-            throw err
-        }
-    }
+
     async getUserById (id) {
         try {
             logger.info(`Se registra petición GET /users/${id}`)
@@ -38,6 +27,20 @@ class UserClass {
         }
         catch (err) {
             logger.error(`Error al obtener user`)
+            throw err
+        }
+    }
+
+
+    async createUser (user) {
+        try {
+            logger.info(`Se registra petición POST /users`)
+            const userCreado = await User.create(user)
+            logger.info(`Se crea user`)
+            return userCreado
+        }
+        catch (err) {
+            logger.error(`Error al crear user`)
             throw err
         }
     }
@@ -80,4 +83,19 @@ class UserClass {
         }
     }
 
+    async getUserByUsername (username) {
+        try {
+            logger.info(`Se registra petición GET /users/username/${username}`)
+            const user = await User.findOne({username})
+            logger.info(`Se obtiene user`)
+            return user
+        }
+        catch (err) {
+            logger.error(`Error al obtener user`)
+            throw err
+        }
+    }
+
 }
+
+export default new userClass()

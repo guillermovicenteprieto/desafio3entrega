@@ -1,7 +1,6 @@
 import { Router } from "express";
-import ProductController from '../controllers/productController.js';
-const productController = new ProductController();
-export const routeProduct = Router();
+import productController from '../controllers/productController.js';
+const routeProduct = Router();
 
 /*====================[Rutas API: /api/productos]====================*/
 routeProduct.get("/productos", productController.getAllProducts);

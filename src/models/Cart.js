@@ -18,7 +18,6 @@ export const Cart = mongoose.model('carts', new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-
     products: [{
         type: Schema.Types.ObjectId,
         ref: 'Product'

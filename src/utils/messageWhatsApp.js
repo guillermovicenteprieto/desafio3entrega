@@ -14,7 +14,7 @@ const sendWhatsApp = async (phone, message, detalle) => {
         body: message + ' ' + detalle,
         // mediaUrl: ['https://res.cloudinary.com/hdsqazxtw/image/upload/v1559681445/logo_coderhouse_2_bmqbet.png'],
         from: 'whatsapp:+14155238886',
-        to: 'whatsapp:+549' + WSPHONE
+        to: 'whatsapp:+' + WSPHONE
     }).then((message) => console.log(message.sid))
 }
 export default sendWhatsApp;

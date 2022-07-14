@@ -1,6 +1,6 @@
 import logger from '../utils/loggers.js'
 import { Product } from '../models/Product.js'
-class ProductsClass {
+class productClass {
   
   constructor () {
     this.listProducts = []
@@ -32,10 +32,10 @@ class ProductsClass {
     }
   }
 
-  async createProduct (producto) {
+  async createProduct (product) {
     try {
       logger.info(`Se registra petición POST /api/productos`)
-      const productoCreado = await Product.create(producto)
+      const productoCreado = await Product.create(product)
       logger.info(`Se crea producto`)
       return productoCreado
     }
@@ -45,10 +45,10 @@ class ProductsClass {
     }
   }
 
-  async updateProduct (id, producto) {
+  async updateProduct (id, product) {
     try {
       logger.info(`Se registra petición PUT /api/productos/${id}`)
-      const productoActualizado = await Product.findByIdAndUpdate(id, producto)
+      const productoActualizado = await Product.findByIdAndUpdate(id, product)
       logger.info(`Se actualiza producto`)
       return productoActualizado
     }
@@ -72,4 +72,4 @@ class ProductsClass {
   }
 }
 
-export default ProductsClass
+export default new productClass()

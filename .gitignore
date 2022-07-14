@@ -2,3 +2,9 @@ node_modules
 .env
 logsData
 config
+vistas_test_compras
+app.js
+dbDAO.js
+mariaDB.js
+avatar
+img

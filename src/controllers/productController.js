@@ -1,16 +1,16 @@
-import ProductsClass from "../class/classProducts.js";
-const productsClass = new ProductsClass();
 import logger from "../utils/loggers.js";
-
-class ProductController {
+import productDao from "../daos/productDao.js";
+class productController {
+  constructor() {
+    this.productDao = [];
+  }
 
   async getAllProducts(req, res) {
     try {
       logger.info(`Se registra petición GET /productos`)
-      const productos = await productsClass.getAllProducts()
+      const productos = await productDao.getAllProducts()
       logger.info(`Se obtienen productos`)
-      res.json(productos)
-      return productos
+      res.json({productos})
     }
     catch (err) {
       logger.error(`Error al obtener productos`)
@@ -21,9 +21,9 @@ class ProductController {
   async createProduct(req, res) {
     try {
       logger.info(`Se registra petición POST /productos`)
-      const productoCreado = await productsClass.createProduct(req.body)
+      const productoCreado = await productDao.createProduct(req.body)
       logger.info(`Se crea producto`)
-      res.json(productoCreado)
+      res.json({productoCreado})
     }
     catch (err) {
       logger.error(`Error al crear producto`)
@@ -34,9 +34,9 @@ class ProductController {
   async getProductById(req, res) {
     try {
       logger.info(`Se registra petición GET /productos/${req.params.id}`)
-      const producto = await productsClass.getProductById(req.params.id)
+      const producto = await productDao.getProductById(req.params.id)
       logger.info(`Se obtiene producto`)
-      res.json(producto)
+      res.json({producto})
     }
     catch (err) {
       logger.error(`Error al obtener producto`)
@@ -47,9 +47,9 @@ class ProductController {
   async updateProduct(req, res) {
     try {
       logger.info(`Se registra petición PUT /productos/${req.params.id}`)
-      const productoActualizado = await productsClass.updateProduct(req.params.id, req.body)
+      const productoActualizado = await productDao.updateProduct(req.params.id, req.body)
       logger.info(`Se actualiza producto`)
-      res.json(productoActualizado)
+      res.json({productoActualizado})
     }
     catch (err) {
       logger.error(`Error al actualizar producto`)
@@ -60,9 +60,9 @@ class ProductController {
   async deleteProduct(req, res) {
     try {
       logger.info(`Se registra petición DELETE /productos/${req.params.id}`)
-      const productoEliminado = await productsClass.deleteProduct(req.params.id)
+      const productoEliminado = await productDao.deleteProduct(req.params.id)
       logger.info(`Se elimina producto`)
-      res.json(productoEliminado)
+      res.json({productoEliminado})
     }
     catch (err) {
       logger.error(`Error al eliminar producto`)
@@ -71,4 +71,4 @@ class ProductController {
   }
 }
 
-export default ProductController 
+export default new productController();

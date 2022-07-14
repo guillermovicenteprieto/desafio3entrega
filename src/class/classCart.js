@@ -1,9 +1,8 @@
 import logger from '../utils/loggers.js'
 import { Cart } from '../models/Cart.js'
 import { Product } from '../models/Product.js'
-
-class CartClass {
-
+import { User } from '../models/User.js'
+class cartClass {
     constructor() {
         this.listProducts = []
     }
@@ -11,9 +10,9 @@ class CartClass {
     async getAllCarts() {
         try {
             logger.info(`Se registra petición GET /api/carritos`)
-            const carts = await Cart.find({})
-            logger.info(`Se obtienen carts`)
-            return carts
+            const carritos = await Cart.find({})
+            logger.info(`Se obtienen carritos`)
+            return carritos
         }
         catch (err) {
             logger.error(`Error al obtener carts`)
@@ -24,9 +23,9 @@ class CartClass {
     async getCartById(id) {
         try {
             logger.info(`Se registra petición GET /api/carritos/${id}`)
-            const cart = await Cart.findById(id)
+            const carrito = await Cart.findById(id)
             logger.info(`Se obtiene cart`)
-            return cart
+            return carrito
         }
         catch (err) {
             logger.error(`Error al obtener cart`)
@@ -51,24 +50,24 @@ class CartClass {
         }
     }
 
-    async createCart(cart) {
+    async createCart(cart, user) {
         try {
             logger.info(`Se registra petición POST /api/carritos`)
             const carrito = await Cart.create(cart)
             logger.info(`Se crea cart`)
-            const carro = {
+            const carritoCreado = {
                 id: carrito._id,
-                products: carrito.products,
                 name: carrito.name,
+                products: carrito.products,
             }
-            return carro
+            return carritoCreado
         }
         catch (err) {
             logger.error(`Error al crear cart`)
             throw err
         }
     }
-    
+
     async addProductToCart(id, idProduct) {
         try {
             logger.info(`Se registra petición POST /api/carritos/${id}/productos/${idProduct}`)
@@ -89,7 +88,7 @@ class CartClass {
             throw err
         }
     }
-    
+
     async removeProductFromCart(id, idProduct) {
         try {
             logger.info(`Se registra petición DELETE /api/carritos/${id}/productos/${idProduct}`)
@@ -137,6 +136,29 @@ class CartClass {
             throw err
         }
     }
+
+    async buyCart(id) {
+        try {
+            logger.info(`Se registra petición POST /api/carritos/${id}/comprar`)
+            const cart = await Cart.findById(id)
+            const products = await Promise.all(cart.products.map(async product => {
+                return await Product.findById(product)
+            }
+            ))
+            const user = await User.findById(cart.user)
+            const carrito = {
+                id: cart._id,
+                name: cart.name,
+                user: user,
+                products: products,
+            }
+            return carrito
+        }
+        catch (err) {
+            logger.error(`Error al comprar carrito`)
+            throw err
+        }
+    }
 }
 
-export default CartClass
+export default new cartClass()

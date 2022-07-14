@@ -12,7 +12,7 @@ const sendSMS = async (phone, message, detalle) => {
       const messages = await client.messages.create({
          body: message + ' ' + detalle,
          from: '+19707177273',
-         to: PHONE
+         to: '+' + PHONE
       })
       console.log(messages)
    } catch (error) {

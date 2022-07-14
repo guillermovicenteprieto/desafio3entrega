@@ -4,7 +4,7 @@ import compression from "compression";
 import logger from "../utils/loggers.js";
 import generateRandomProduct from "../class/fakerContainer.js";
 import randomNumbers from "../utils/randomApi.js";
-const listProducts = generateRandomProduct(7);
+const listProducts = generateRandomProduct(5);
 
 export const routerInfo = Router();
 
