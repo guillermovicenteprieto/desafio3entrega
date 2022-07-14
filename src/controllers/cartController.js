@@ -12,7 +12,7 @@ import sendSMS from "../utils/messageSMS.js";
 import sendMail from "../utils/messageEmailEthereal.js";
 import sendWhatsapp from "../utils/messageWhatsApp.js";
 const PHONE_TEST = process.env.PHONE
-const TEST_MAIL_ETHEREAL='wyatt.luettgen92@ethereal.email'
+const TEST_MAIL_ETHEREAL = 'wyatt.luettgen92@ethereal.email'
 const WSPHONE = process.env.WSPHONE
 
 
@@ -71,7 +71,7 @@ class cartController {
             logger.info(`Se registra petición POST /api/carritos`)
             const carrito = await cartDao.createCart(req.body)
             logger.info(`Se crea cart`)
-            res.json({carritoCreado: carrito})
+            res.json({ carritoCreado: carrito })
             return carrito
         }
         catch (err) {
@@ -84,9 +84,9 @@ class cartController {
         try {
             logger.info(`Se registra petición POST 
             /api/carritos/${req.params.id}/productos/${req.params.idProduct}`)
-            const cart = await cartDao.addProductToCart (req.params.id, req.params.idProduct)
+            const cart = await cartDao.addProductToCart(req.params.id, req.params.idProduct)
             logger.info(`Se agrega producto al carrito`)
-            res.json({  productoAgregado: cart })
+            res.json({ productoAgregado: cart })
             return cart
         }
         catch (err) {
@@ -100,7 +100,7 @@ class cartController {
             logger.info(`Se registra petición DELETE /api/carritos/${req.params.id}`)
             const cart = await cartDao.deleteCart(req.params.id)
             logger.info(`Se elimina cart`)
-            res.json({carritoEliminado: cart})
+            res.json({ carritoEliminado: cart })
             return cart
         }
         catch (err) {
@@ -128,17 +128,14 @@ class cartController {
             const user = await User.findById(req.params.idUser);
             const products = await Product.find({ _id: { $in: cart.products } });
             const total = products.reduce((total, product) => total + product.price, 0);
-            const message = `Hola ${user.username}, tu compra ha sido realizada con éxito. Ver detalle >`; 
+            const message = `Hola ${user.username}, tu compra ha sido realizada con éxito. Ver detalle >`;
             const detalle = `El total es de la compra es $ ${total}. Detalle de la compra: ${products.map(product => `${product.name} - ${product.price}`).join(', ')}`;
-    
             //sendSMS(user.phone, message, detalle);
             //sendMail(user.email, message, detalle);
             //sendWhatsapp(WSPHONE, message, detalle);
-    
             sendMail(TEST_MAIL_ETHEREAL, message, detalle);
             sendSMS(PHONE_TEST, message, detalle);
             sendWhatsapp(WSPHONE, message, detalle);
-    
             res.json({
                 message: 'Compra realizada con éxito',
                 cart: cart,
@@ -146,7 +143,6 @@ class cartController {
                 products: products,
                 total: total
             });
-    
         }
         catch (error) {
             res.status(500).json({ message: "Error al realizar la compra" });

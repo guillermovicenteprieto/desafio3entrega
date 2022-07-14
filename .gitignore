@@ -1,10 +1,8 @@
 node_modules
 .env
-logsData
 config
-vistas_test_compra
-app.js
+img
+logsData
 dbDAO.js
 mariaDB.js
-avatar
-img
+nodemon.json

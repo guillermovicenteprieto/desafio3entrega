@@ -18,6 +18,7 @@ class userDao {
             throw err;
         }
     }
+
     async getUserById(id) {
         try {
             logger.info(`Se registra petición GET /api/users/${id}`);
@@ -30,6 +31,7 @@ class userDao {
             throw err;
         }
     }
+
     async createUser(user) {
         try {
             logger.info(`Se registra petición POST /api/users`);
@@ -42,6 +44,7 @@ class userDao {
             throw err;
         }
     }
+
     async updateUser(id, user) {
         try {
             logger.info(`Se registra petición PUT /api/users/${id}`);
@@ -54,6 +57,7 @@ class userDao {
             throw err;
         }
     }
+    
     async deleteUser(id) {
         try {
             logger.info(`Se registra petición DELETE /api/users/${id}`);

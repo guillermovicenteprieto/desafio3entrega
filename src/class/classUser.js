@@ -1,10 +1,10 @@
 import logger from '../utils/loggers.js'
 import { User } from '../models/User.js'
-
 class userClass {
     constructor () {
         this.listUsers = []
     }
+
     async getAllUsers () {
         try {
             logger.info(`Se registra petición GET /users`)
@@ -31,7 +31,6 @@ class userClass {
         }
     }
 
-
     async createUser (user) {
         try {
             logger.info(`Se registra petición POST /users`)
@@ -44,6 +43,7 @@ class userClass {
             throw err
         }
     }
+
     async updateUser (id, user) {
         try {
             logger.info(`Se registra petición PUT /users/${id}`)
