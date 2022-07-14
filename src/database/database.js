@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-import logger from "./utils/loggers.js";
+import logger from "../utils/loggers.js";
 
 const mongoDB_URI = process.env.MONGO_URI || "mongodb://localhost/Desafio3Entrega";
 

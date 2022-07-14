@@ -21,8 +21,8 @@ Log4js.configure({
 
 let logger;
 
-if (process.argv[2] === "DEF") {
-    logger = Log4js.getLogger("default");
+if (process.argv[2] === "PROD") {
+    logger = Log4js.getLogger("prod");
 } else if (process.argv[2] === "DEV") {
     logger = Log4js.getLogger("dev");
 } else {
