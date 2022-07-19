@@ -3,11 +3,12 @@ import { Cart } from "../models/Cart.js";
 import { Product } from "../models/Product.js";
 import { User } from "../models/User.js";
 import moment from "moment";
+import cartDto from "../dtos/cartDto.js";
 let instance = null;
-
 class cartDao {
   constructor() {
-    this.listProducts = [];
+    // this.listProducts = [];
+    this.listCarts = cartDto;
   }
 
   static getInstance() {
@@ -24,7 +25,7 @@ class cartDao {
       logger.info(`Se obtienen carritos`);
       return carritos;
     } catch (err) {
-      logger.error(`Error al obtener carts en dao getAllCarts()`); 
+      logger.error(`Error al obtener carts en dao getAllCarts()`);
       throw err;
     }
   }
@@ -67,7 +68,7 @@ class cartDao {
         id: carrito._id,
         name: carrito.name,
         products: carrito.products,
-        timestamp: moment(carrito.timestamp).format('L LTS'),
+        timestamp: moment(carrito.timestamp).format("L LTS"),
       };
       return carritoCreado;
     } catch (err) {
@@ -86,7 +87,9 @@ class cartDao {
       cart.products.push(product);
       cart.save((err, carrito) => {
         if (err) {
-          logger.error(`Error al agregar producto al carrito en dao addProductToCart() método save()`);
+          logger.error(
+            `Error al agregar producto al carrito en dao addProductToCart() método save()`
+          );
           throw err;
         } else {
           logger.info(`Se agrega producto al carrito`);
@@ -94,7 +97,9 @@ class cartDao {
         }
       });
     } catch (err) {
-      logger.error(`Error al agregar producto al carrito en dao addProductToCart()`);
+      logger.error(
+        `Error al agregar producto al carrito en dao addProductToCart()`
+      );
       throw err;
     }
   }
@@ -109,7 +114,9 @@ class cartDao {
       cart.products.pull(product);
       cart.save((err, carrito) => {
         if (err) {
-          logger.error(`Error al eliminar producto del carrito en dao removeProductFromCart() método save()`);
+          logger.error(
+            `Error al eliminar producto del carrito en dao removeProductFromCart() método save()`
+          );
           throw err;
         } else {
           logger.info(`Se elimina producto del carrito`);
@@ -117,7 +124,9 @@ class cartDao {
         }
       });
     } catch (err) {
-      logger.error(`Error al eliminar producto del carrito en dao removeProductFromCart()`);
+      logger.error(
+        `Error al eliminar producto del carrito en dao removeProductFromCart()`
+      );
       throw err;
     }
   }

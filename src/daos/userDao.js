@@ -1,9 +1,11 @@
 import logger from "../utils/loggers.js";
 import { User } from "../models/User.js";
+import userDto from "../dtos/userDto.js";
 let instance = null;
 class userDao {
   constructor() {
-    this.listUsers = [];
+    // this.listUsers = [];
+    this.listUsers = userDto;
   }
   static getInstance() {
     if (!instance) {
@@ -59,7 +61,6 @@ class userDao {
       throw err;
     }
   }
-
 
   async updateUser(id, user) {
     try {
@@ -132,9 +133,6 @@ class userDao {
       throw err;
     }
   }
-
-
-
 }
 
 export default new userDao();

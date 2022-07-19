@@ -1,14 +1,16 @@
 import logger from "../utils/loggers.js";
 import { Product } from "../models/Product.js";
+import productDto from "../dtos/productDto.js";
 let instance = null;
 class productDao {
   constructor() {
-    this.listProducts = [];
+    // this.listProducts = []
+    this.listProducts = productDto;
   }
   static getInstance() {
     if (!instance) {
       instance = new productDao();
-    } 
+    }
     return instance;
   }
 
