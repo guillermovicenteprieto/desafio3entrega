@@ -1,9 +1,13 @@
 node_modules
 .env
 config
+clase39-40
 img
 logsData
 dbDAO.js
 mariaDB.js
 nodemon.json
 server.js
+src/daos/remove
+src/class/remove
+src/services/remove

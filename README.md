@@ -1,10 +1,9 @@
-### Desafio: Dividiendo el Proyecto en capas
+### Desafio: Mejorar la arquitectura de nuestra API
 
 ### Proyecto deployado en Heroku:
 
 https://desafio3entregaproyectofinal.herokuapp.com/
 
-#### working progress:
 
 ## Rutas
 

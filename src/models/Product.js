@@ -10,7 +10,6 @@ export const Product = mongoose.model(
     image: { type: String },
     url: { type: String },
     code: { type: String },
-    // image: { type: String, required: true },
-    // category: { type: String, required: true }
+    category: { type: String, required: true },
   })
 );

@@ -27,4 +27,12 @@ routeUser.post(
   userController.registroPost
 );
 
+/*=========================[NUEVAS RUTAS API: /]=========================*/
+routeUser.get("/users", isAuth, userController.getAllUsers);
+routeUser.get("/users/:id", isAuth, userController.getUserById);
+routeUser.get("/users/:id/image", isAuth, userController.getUserImage);
+routeUser.delete("/users/:id", isAuth, userController.deleteUser);
+routeUser.put("/users/:id", isAuth, userController.updateUser);
+
+
 export default routeUser;

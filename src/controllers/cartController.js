@@ -1,6 +1,10 @@
 import logger from "../utils/loggers.js";
-import cartDao from "../daos/cartDao.js";
-import productDao from "../daos/productDao.js";
+// import cartDao from "../daos/cartDao.js";
+// import productDao from "../daos/productDao.js";
+
+import cartService from "../services/cartService.js";
+import productService from "../services/productService.js";
+let instance= null;
 
 /*===============[Datos necesarios para método buyCart]===============*/
 import dotenv from "dotenv";
@@ -19,14 +23,20 @@ const WSPHONE = process.env.WSPHONE;
 
 class cartController {
   constructor() {
-    this.cartDao = [];
-    this.productDao = [];
+    this.cartService = [];
+    this.productService = [];
+  }
+  static getInstance() {
+    if(!instance) {
+        instance = new cartController()
+    }
+    return instance
   }
 
   async getAllCarts(req, res) {
     try {
       logger.info(`Se registra petición GET /api/carritos`);
-      const carritos = await cartDao.getAllCarts();
+      const carritos = await cartService.getAllCarts();
       logger.info(`Se obtienen carts`);
       res.json({ carritos });
     } catch (err) {
@@ -38,7 +48,7 @@ class cartController {
   async getCartById(req, res) {
     try {
       logger.info(`Se registra petición GET /api/carritos/${req.params.id}`);
-      const carrito = await cartDao.getCartById(req.params.id);
+      const carrito = await cartService.getCartById(req.params.id);
       logger.info(`Se obtiene cart`);
       res.json({ carrito });
     } catch (err) {
@@ -51,10 +61,10 @@ class cartController {
     try {
       logger.info(`Se registra petición GET 
             /api/carritos/${req.params.id}/productos`);
-      const carrito = await cartDao.getCartById(req.params.id);
+      const carrito = await cartService.getCartById(req.params.id);
       const productos = await Promise.all(
         carrito.products.map(async (product) => {
-          return await productDao.getProductById(product);
+          return await productService.getProductById(product);
         })
       );
       logger.info(`Se obtiene cart`);
@@ -68,7 +78,7 @@ class cartController {
   async createCart(req, res) {
     try {
       logger.info(`Se registra petición POST /api/carritos`);
-      const carrito = await cartDao.createCart(req.body);
+      const carrito = await cartService.createCart(req.body);
       logger.info(`Se crea cart`);
       res.json({ carritoCreado: carrito });
       return carrito;
@@ -82,7 +92,7 @@ class cartController {
     try {
       logger.info(`Se registra petición POST 
             /api/carritos/${req.params.id}/productos/${req.params.idProduct}`);
-      const cart = await cartDao.addProductToCart(
+      const cart = await cartService.addProductToCart(
         req.params.id,
         req.params.idProduct
       );
@@ -98,7 +108,7 @@ class cartController {
   async deleteCart(req, res) {
     try {
       logger.info(`Se registra petición DELETE /api/carritos/${req.params.id}`);
-      const cart = await cartDao.deleteCart(req.params.id);
+      const cart = await cartService.deleteCart(req.params.id);
       logger.info(`Se elimina cart`);
       res.json({ carritoEliminado: cart });
       return cart;
@@ -113,7 +123,7 @@ class cartController {
       logger.info(
         `Se registra petición DELETE /api/carritos/${req.params.id}/productos/${req.params.idProduct}`
       );
-      const cart = await cartDao.removeProductFromCart(
+      const cart = await cartService.removeProductFromCart(
         req.params.id,
         req.params.idProduct
       );
