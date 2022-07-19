@@ -1,6 +1,4 @@
 import logger from "../utils/loggers.js";
-// import cartClass from "../class/classCart.js";
-// import productClass from "../class/classProduct.js";
 import cartDao from "../daos/cartDao.js";
 import productDao from "../daos/productDao.js";
 let instance = null;

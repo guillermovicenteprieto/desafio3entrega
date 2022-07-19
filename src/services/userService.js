@@ -1,5 +1,4 @@
 import logger from "../utils/loggers.js";
-// import userClass from "../class/classUser.js";
 import userDao from "../daos/userDao.js";
 let instance = null;
 

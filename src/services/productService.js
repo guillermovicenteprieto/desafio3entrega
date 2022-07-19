@@ -1,5 +1,4 @@
 import logger from "../utils/loggers.js";
-// import productClass from "../class/classProduct.js";
 import productDao from "../daos/productDao.js";
 let instance = null;
 class productService {

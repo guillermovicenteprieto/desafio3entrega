@@ -1,7 +1,5 @@
 import logger from "../utils/loggers.js";
 import userService from "../services/userService.js";
-// import allProducts from "../services/listProductsOnDB.js";
-// const listProductsOnDB = allProducts;
 import allProducts from "../utils/listProductsOnDB.js";
 const listProductsOnDB = allProducts;
 import sharp from "sharp";

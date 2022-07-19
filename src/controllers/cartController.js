@@ -1,7 +1,4 @@
 import logger from "../utils/loggers.js";
-// import cartDao from "../daos/cartDao.js";
-// import productDao from "../daos/productDao.js";
-
 import cartService from "../services/cartService.js";
 import productService from "../services/productService.js";
 let instance= null;
