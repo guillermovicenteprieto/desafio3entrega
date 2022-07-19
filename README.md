@@ -2,7 +2,7 @@
 
 ### Proyecto deployado en Heroku:
 
-https://desafio3entregaproyectofinal.herokuapp.com/
+https://proyecto-mejoradearquitectura.herokuapp.com
 
 
 ## Rutas
