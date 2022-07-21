@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js", 
-    "devs": "nodemon app.js"
+    "dev": "nodemon index.js",
+    "devs": "nodemon serverSQL.js"
   },
   "keywords": [],
   "author": "Guillermo Vicente",
@@ -22,6 +22,7 @@
     "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.4",
@@ -41,6 +42,7 @@
     "pm2": "^5.2.0",
     "sequelize": "^6.21.3",
     "sharp": "^0.30.7",
+    "sqlite3": "^5.0.9",
     "twilio": "^3.78.0"
   },
   "devDependencies": {

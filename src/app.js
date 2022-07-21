@@ -14,6 +14,7 @@ import routerInfo from "./routes/routeInfo.js";
 import routeUser from "./routes/routeUser.js";
 import routeProduct from "./routes/routeProduct.js";
 import routeCart from "./routes/routeCart.js";
+import cors from 'cors';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compression());
+app.use(cors());
 app.use(
   session({
     secret: process.env.SECRET || "secret",

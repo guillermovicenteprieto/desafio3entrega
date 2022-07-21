@@ -1,8 +1,7 @@
 node_modules
 .env
-config
+configOld
 clase39-40
-img
 logsData
 dbDAO.js
 mariaDB.js
@@ -11,3 +10,14 @@ server.js
 src/daos/remove
 src/class/remove
 src/services/remove
+app.js
+options
+config
+src/factorys
+src/repositorys
+src/db
+src/model
+src/rout
+server
+client
+serverSQL.js
