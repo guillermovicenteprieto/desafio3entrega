@@ -6,12 +6,6 @@
 
 ##### Prueba de test con Axios en archivo 'testAxios.js', en carpeta 'test/testAxios'. Resultados obtenidos en archivos .json en carpeta 'test/testAxios'. Para ejecutar prueba, descomentar líneas de código en index.js: *==[Test de solicitudes utilizando Axios]==*
 
-#####
-
-### Proyecto deployado en Heroku:
-
-https://proyecto-mejoradearquitectura.herokuapp.com
-
 
 ## Rutas
 
