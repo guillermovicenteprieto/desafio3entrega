@@ -2,6 +2,8 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 import { isValidPassword, createHash } from "./validate.js";
 import { User } from "../models/User.js";
+import sharp from "sharp";
+import fs from "fs";
 
 passport.serializeUser((user, done) => done(null, user._id));
 passport.deserializeUser((id, done) => User.findById(id, done));
@@ -27,21 +29,25 @@ export const signupStrategy = new Strategy(
         adress: req.body.adress,
         age: req.body.age,
         phone: req.body.phone,
-        image: req.file.image,
+        image: req.file.originalname,
         username: req.body.username,
         email: req.body.email,
         password: createHash(password),
       };
 
-      User.create(newUser, (err, userWithId) => {
+      User.create(newUser, async (err, userWithId) => {
+        const image = req.file
+        const processImage = sharp(image.buffer);
+        const data = await processImage.resize(200, 200).toBuffer();
+        
+        //fs.writeFileSync(`avatar/users/${image}`, data);
+        
+        fs.writeFileSync(`avatar/users/${image.originalname}`, data);
+        //image = image.originalname;
+        newUser.image = data
         if (err) return done(err);
         return done(null, userWithId);
       });
-      // image = newUser.image
-      // const processImage = sharp(image.buffer)
-      // const data = await processImage.resize(200, 200).toBuffer();
-      // fs.writeFileSync(`avatar/Users/${image.originalname}`, data);
-      // newUser.image=data
     });
   }
 );

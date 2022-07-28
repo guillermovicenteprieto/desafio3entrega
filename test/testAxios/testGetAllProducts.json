@@ -1,0 +1,147 @@
+{
+  "productos": [
+    {
+      "_id": "62c4bdd08435dbcacac3316a",
+      "name": "black shoes",
+      "price": 500,
+      "url": "https://via.placeholder.com/200",
+      "description": "Probando nuevamente! DESAFIO 3 ENTREGA",
+      "__v": 0,
+      "timestamp": "2022-07-28T03:21:36.343Z"
+    },
+    {
+      "_id": "62c4bde38435dbcacac3316c",
+      "name": "una casa con diez pinos",
+      "price": 500,
+      "url": "https://via.placeholder.com/200",
+      "description": "DESAFIO 3 ENTREGA",
+      "__v": 0,
+      "timestamp": "2022-07-28T03:21:36.343Z"
+    },
+    {
+      "_id": "62c4bdf48435dbcacac3316e",
+      "name": "la otra cara de la luna",
+      "price": 500,
+      "url": "https://via.placeholder.com/200",
+      "description": "DESAFIO 3 ENTREGA",
+      "__v": 0,
+      "timestamp": "2022-07-28T03:21:36.343Z"
+    },
+    {
+      "_id": "62c4be0e8435dbcacac33171",
+      "name": "Producto ACTUALIZADOOOO",
+      "price": 1500,
+      "description": "description ACTUALIZADA",
+      "__v": 0,
+      "timestamp": "2022-07-28T03:21:36.343Z"
+    },
+    {
+      "_id": "62c75bb35e7aaa8656a5e1dd",
+      "name": "Producto de prueba para borrar #3",
+      "price": 1500,
+      "stock": 500,
+      "description": "description este elemento se borrará",
+      "timestamp": "2022-07-07T22:18:27.308Z",
+      "__v": 0
+    },
+    {
+      "_id": "62c76b06180773b45c1af9f9",
+      "timestamp": "2022-07-07T23:23:50.541Z",
+      "__v": 0,
+      "description": "description para producto actualizado #UPDATED",
+      "name": "Producto Actualizado #UPDATED",
+      "price": 1500,
+      "stock": 500,
+      "image": "https://via.placeholder.com/200"
+    },
+    {
+      "_id": "62ca6164fe07e7093d91d6d4",
+      "name": "TERMO ACERO INOXIDABLE",
+      "price": 5400,
+      "stock": 28,
+      "description": "para mate con yerbas exóticas",
+      "timestamp": "2022-07-10T05:19:32.631Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cc9af3f212fc2f674f0c7a",
+      "name": "Producto #001",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #001",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-11T21:49:39.521Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cc9afcf212fc2f674f0c7c",
+      "name": "Producto #002",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #002",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-11T21:49:48.468Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cc9b04f212fc2f674f0c7e",
+      "name": "Producto #003",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #003",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-11T21:49:56.393Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cc9b0af212fc2f674f0c80",
+      "name": "Producto #004",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #004",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-11T21:50:02.656Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cc9b10f212fc2f674f0c82",
+      "name": "Producto #005",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #005",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-11T21:50:08.609Z",
+      "__v": 0
+    },
+    {
+      "_id": "62ccc5338988a2eb33f0c475",
+      "name": "Producto #006",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #006",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-12T00:49:55.906Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cf8383c7b9af07acb76d6d",
+      "name": "Producto #007",
+      "price": 6000,
+      "stock": 100,
+      "description": "Descripción de Producto #006",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-14T02:46:27.655Z",
+      "__v": 0
+    },
+    {
+      "_id": "62cf8398c7b9af07acb76d6f",
+      "name": "Producto #008",
+      "price": 7500,
+      "stock": 100,
+      "description": "Descripción de Producto #008",
+      "image": "https://via.placeholder.com/200",
+      "timestamp": "2022-07-14T02:46:48.982Z",
+      "__v": 0
+    }
+  ]
+}

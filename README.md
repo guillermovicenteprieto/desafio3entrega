@@ -1,4 +1,12 @@
-### Desafio: Mejorar la arquitectura de nuestra API
+### Desafio: TESTEANDO LA API REST
+
+##### Pruebas de Test con Mocha - Chai en archivo 'index.test.js', en carpeta 'test'. 
+##### Pruebas de Test con Chai HTTP en archivo 'server.test.js', en carpeta 'test'. 
+##### Correr *npm test* para obtener resultados
+
+##### Prueba de test con Axios en archivo 'testAxios.js', en carpeta 'test/testAxios'. Resultados obtenidos en archivos .json en carpeta 'test/testAxios'. Para ejecutar prueba, descomentar líneas de código en index.js: *==[Test de solicitudes utilizando Axios]==*
+
+#####
 
 ### Proyecto deployado en Heroku:
 

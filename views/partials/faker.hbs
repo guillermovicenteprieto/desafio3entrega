@@ -7,7 +7,7 @@
           <th scope="col">ID</th>
           <th scope="col">Titulo</th>
           <th scope="col">Precio</th>
-          <th scope="col">Imagen</th>
+          <th class="text-center" scope="col">Imagen</th>
         </tr>
       </thead>
       <tbody class="bg-light">
@@ -16,10 +16,11 @@
             <th scope="row">{{this.id}}</th>
             <td>{{this.name}}</td>
             <td>{{this.price}}</td>
-            <td><img
+            <td class="text-center"><img
                 src="{{this.url}}"
                 alt="{{this.name}}"
-                width="25"
+                width="50"
+                height="50"
               /></td>
           </tr>
         {{/each}}

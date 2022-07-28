@@ -8,6 +8,27 @@ import cluster from "cluster";
 const numCPUs = os.cpus().length;
 const argv = minimist(process.argv.slice(2));
 const serverMode = argv.mode || "FORK";
+
+/*==============[Test de solicitudes utilizando Axios]==============*/
+import testAxios from "./test/testAxios/testAxios.js";
+//testAxios.testGetAllProducts();
+// testAxios.testGetProductById("62c4bde38435dbcacac3316c");
+// testAxios.testCreateProduct({
+//   nombre: "Producto de prueba",
+//   precio: "100",
+//   stock: "10",
+//   descripcion: "creación de producto para Test Axios",
+//   imagen: "Imagen de prueba"
+// });
+// testAxios.testUpdateProduct("62cf8383c7b9af07acb76d6d", {
+//   nombre: "Actualización de producto ",
+//   precio: "100",
+//   stock: "10",
+//   descripcion: "Actualización de producto para Test Axios",
+//   imagen: "Imagen de prueba"
+// });
+//testAxios.testDeleteProduct("62c4bde38435dbcacac3316c");
+
 /*============================[Servidor]============================*/
 const PORT = process.env.PORT;
 if (serverMode == "CLUSTER") {

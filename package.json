@@ -4,10 +4,13 @@
   "description": "",
   "type": "module",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
+    "test": "mocha",
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "devs": "nodemon serverSQL.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "Guillermo Vicente",
@@ -15,8 +18,11 @@
   "dependencies": {
     "@faker-js/faker": "^6.3.1",
     "autocannon": "^7.9.0",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "child_process": "^1.0.2",
     "cluster": "^0.7.7",
     "compression": "^1.7.4",
@@ -32,8 +38,10 @@
     "knex": "^2.1.0",
     "log4js": "^6.5.2",
     "minimist": "^1.2.6",
+    "mocha": "^10.0.0",
     "moment": "^2.29.3",
     "mongoose": "^6.3.5",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
     "nodemailer": "^6.7.6",

@@ -1,0 +1,1 @@
+"testCreateProduct: Status 200 - {\"nombre\":\"Producto de prueba\",\"precio\":\"100\",\"stock\":\"10\",\"descripcion\":\"creación de producto para  Test Axios\",\"imagen\":\"Imagen de prueba\"}"

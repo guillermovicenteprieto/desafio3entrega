@@ -2,12 +2,14 @@ node_modules
 .env
 img
 configOld
+config
 clase39-40
+client
+img
 logsData
 dbDAO.js
-mariaDB.js
+options
 nodemon.json
-server.js
 src/daos/remove
 src/class/remove
 src/services/remove
@@ -19,6 +21,5 @@ src/repositorys
 src/db
 src/model
 src/rout
-server
-client
+server.js
 serverSQL.js

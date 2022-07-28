@@ -28,10 +28,10 @@ routeUser.post(
 );
 
 /*=========================[NUEVAS RUTAS API: /]=========================*/
-routeUser.get("/users", isAuth, userController.getAllUsers);
+routeUser.get("/users", userController.getAllUsers);
 routeUser.get("/users/:id", isAuth, userController.getUserById);
-routeUser.get("/users/:id/image", isAuth, userController.getUserImage);
-routeUser.delete("/users/:id", isAuth, userController.deleteUser);
+routeUser.get("/users/:id/image", userController.getUserImage);
+routeUser.delete("/users/:id", userController.deleteUser);
 routeUser.put("/users/:id", isAuth, userController.updateUser);
 
 

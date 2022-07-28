@@ -43,7 +43,8 @@ class userController {
         const nombre = user.username;
         const email = user.email;
         const id = user._id;
-        const imagen = fs.readFileSync(`avatar/users/${user.image}`);
+        const img = fs.readFileSync(`avatar/users/${user.image}`);
+        const imagen = `data:image/png;base64,${img.toString("base64")}`;
         logger.info(`Se registra petición GET /productos por ${nombre}`);
         res.render("products", { listProductsOnDB, nombre, email, id, imagen });
       } else {
@@ -98,15 +99,9 @@ class userController {
     try {
       logger.info(`Se registra petición POST /registro`);
       const image = req.file;
-      console.log(image);
       const processImage = sharp(image.buffer);
       const data = await processImage.resize(200, 200).toBuffer();
-      //const user = { ...req.body, image: data };
-
-      //fs.writeFileSync(`avatar/users/${image.originalname}`, data);
       fs.writeFileSync(`avatar/users/${req.user.image}`, data);
-      // const user = { ...req.body, image: data };
-      // const newUser = await userService.createUser(user);
       logger.info(`Se registra petición POST /registro`);
       res.redirect("/login");
     } catch (err) {
@@ -194,14 +189,13 @@ class userController {
       const user = await userService.getUserById(req.params.id);
       const image = fs.readFileSync(`avatar/users/${user.image}`);
       res.setHeader("Content-Type", "image/png");
-      //const image = user.image;
-      //res.json({image});
       res.send(image);
     } catch (error) {
       logger.error(error);
       res.json({ message: "Error al obtener la imagen" });
     }
   }
+
   async deleteUser(req, res) {
     try {
       logger.info(`Se registra petición DELETE /users/${req.params.id}`);
@@ -212,6 +206,7 @@ class userController {
       res.json({ message: "Error al eliminar el usuario" });
     }
   }
+
   async updateUser(req, res) {
     try {
       logger.info(`Se registra petición PUT /users/${req.params.id}`);
@@ -222,7 +217,6 @@ class userController {
       res.json({ message: "Error al actualizar el usuario" });
     }
   }
-  
 }
 
 export default new userController();

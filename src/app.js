@@ -16,6 +16,9 @@ import routeProduct from "./routes/routeProduct.js";
 import routeCart from "./routes/routeCart.js";
 import cors from 'cors';
 
+import axios from "axios";
+
+
 const app = express();
 
 /*============================[Middlewares]============================*/
@@ -62,6 +65,16 @@ app.use("/", routerInfo);
 app.use("/", routeUser);
 app.use("/api", routeProduct);
 app.use("/api", routeCart);
+
+/*============================[Test]============================*/
+app.get("/posts", async (req, res) => {
+  try {
+    const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    res.send(response.data);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 /*======================[Demás rutas indefinidas]======================*/
 app.get("*", (req, res) => {
